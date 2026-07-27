@@ -1,33 +1,38 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ARCHIVE="/tmp/today-mayor.tar.gz"
-BUILD_DIR="/tmp/today-mayor-build"
+ARCHIVE="/tmp/today-mayor-site.tar.gz"
+BUILD_DIR="/tmp/today-mayor-site-build"
+EXPECTED_SHA256="64a50dc90be5fe71bf9ba9b347188a2ccd8c146f666fbaf2e6a62b4f4227a8f1"
 
-mapfile -d '' PARTS < <(
-  find bootstrap -maxdepth 1 -type f -name 'part-*.b64' -print0 | sort -z
+PARTS=(
+  cloudflare/chunks/part-00
+  cloudflare/chunks/part-01
+  cloudflare/chunks/part-02
+  cloudflare/chunks/part-03
+  cloudflare/chunks/part-04
+  cloudflare/chunks/part-05
+  cloudflare/chunks/part-06
 )
 
-if (( ${#PARTS[@]} == 0 )); then
-  echo "Cloudflare assets were not found" >&2
-  exit 1
-fi
+for part in "${PARTS[@]}"; do
+  if [[ ! -f "$part" ]]; then
+    echo "Cloudflare asset is missing: $part" >&2
+    exit 1
+  fi
+done
+
+rm -rf "$BUILD_DIR" "$ARCHIVE" site
+mkdir -p "$BUILD_DIR"
 
 cat "${PARTS[@]}" | tr -d '\r\n' | base64 --decode > "$ARCHIVE"
+echo "$EXPECTED_SHA256  $ARCHIVE" | sha256sum --check
 
-rm -rf "$BUILD_DIR" dist
-mkdir -p "$BUILD_DIR"
 tar -xzf "$ARCHIVE" -C "$BUILD_DIR"
+cp -a "$BUILD_DIR/site" ./site
 
-if [[ ! -f "$BUILD_DIR/dist/index.html" ]]; then
-  echo "dist/index.html was not found in the asset archive" >&2
-  exit 1
-fi
+test -f site/index.html
+test -f site/_headers
+test -f site/_redirects
 
-cp -a "$BUILD_DIR/dist" ./dist
-
-test -f dist/index.html
-test -f dist/src/main.js
-test -f dist/assets/secretary-normal.svg
-
-echo "Cloudflare Pages assets are ready in dist/"
+echo "Cloudflare Pages assets are ready in site/"
