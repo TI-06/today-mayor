@@ -1,0 +1,59 @@
+name: Bootstrap project
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "bootstrap/**"
+      - ".github/workflows/bootstrap.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  import-project:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22.16.0"
+
+      - name: Restore project archive
+        shell: bash
+        run: |
+          set -euo pipefail
+          find bootstrap -type f -name 'part-*.b64' -print0 \
+            | sort -z \
+            | xargs -0 cat \
+            | base64 --decode > /tmp/today-mayor.tar.gz
+          echo "98417a88f959184f351ec42b1d168f8e83ef39108c03400a384ba13f38210d1d  /tmp/today-mayor.tar.gz" | sha256sum --check
+          tar -xzf /tmp/today-mayor.tar.gz -C .
+          test -f package.json
+          test -f src/game/content.js
+
+      - name: Remove temporary bootstrap files
+        shell: bash
+        run: |
+          rm -rf bootstrap
+          rm -f .github/workflows/bootstrap.yml
+
+      - name: Verify project
+        run: npm run verify
+
+      - name: Commit imported project
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "feat: import today mayor MVP"
+          git push origin HEAD:main
