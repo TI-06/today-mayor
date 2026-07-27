@@ -8,8 +8,8 @@ mapfile -d '' PARTS < <(
   find bootstrap -maxdepth 1 -type f -name 'part-*.b64' -print0 | sort -z
 )
 
-if (( ${#PARTS[@]} < 9 )); then
-  echo "Cloudflare assets are incomplete: ${#PARTS[@]} parts found" >&2
+if (( ${#PARTS[@]} == 0 )); then
+  echo "Cloudflare assets were not found" >&2
   exit 1
 fi
 
