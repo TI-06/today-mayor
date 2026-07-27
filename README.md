@@ -1,10 +1,10 @@
 # 今日の市長
 
-タヌキ秘書と一緒に、1日3件の政策を判断するスマホ向け2D都市運営Webゲームです。
+タヌキ秘書「ポン吉」と一緒に街を育てる、スマホ向け2D都市運営Webゲームです。
 
 ## Cloudflare Pages公開設定
 
-GitHub Actionsや`npm install`は使用しません。Cloudflare Pagesが検証済みの公開資産を`site/`へ展開します。
+公開資産は`site/`へ直接配置済みです。圧縮ファイルの復元や`npm install`は行いません。
 
 | 設定項目 | 入力値 |
 |---|---|
@@ -14,26 +14,28 @@ GitHub Actionsや`npm install`は使用しません。Cloudflare Pagesが検証�
 | Build output directory | `site` |
 | Root directory | 空欄 |
 
-Cloudflare Dashboardで **Workers & Pages → Create → Pages → Import an existing Git repository** を選択し、`TI-06/today-mayor`を接続してください。
+`cloudflare-build.sh`は公開ファイルの存在確認とJavaScript構文チェックだけを行います。
 
-## 仕組み
+## 公開ファイル
 
-- `cloudflare/chunks/part-00`～`part-06`：公開資産を小分けしたデータ
-- `cloudflare-build.sh`：固定順で結合し、SHA-256検証後に展開
-- `site/`：Cloudflare Pagesが公開する最終成果物
-
-ハッシュが一致しない場合は、壊れた資産を公開せずビルドを停止します。
+- `site/index.html`：ゲーム画面
+- `site/styles.css`：スマホ向けUI
+- `site/app.js`：政策・連鎖イベント・保存・実績・地区成長
+- `site/sw.js`：オフラインキャッシュ
+- `site/manifest.webmanifest`：ホーム画面追加設定
+- `site/_headers`：セキュリティヘッダー
+- `site/_redirects`：SPAフォールバック
 
 ## 主な機能
 
-- 登録なしで即プレイ、端末内オートセーブ
-- 8分野・6地区・15住民・50件超の政策／続報イベント
-- 直近の分野・人物・地区を避ける重複抑制抽選
-- 即時効果、数日後の影響、条件付き連鎖、季節イベント
-- 2D街並み、地区レベル、実績、市民図鑑、政策履歴
-- タヌキ秘書の表情・短評・緊急案内
-- スマホ共有
+- 登録なしですぐ遊べる端末内オートセーブ
+- 経済・福祉・教育・環境・防災・観光・交通・デジタルの8分野
+- 6地区の成長と街並みの変化
+- 住民・分野・直近案件を考慮した重複抑制抽選
+- 即時効果、数日後の影響、失敗リスク、続報イベント
+- タヌキ秘書の通常・笑顔・心配リアクション
+- 政策履歴、実績、共有、PWA対応
 
 ## 公開後
 
-Cloudflare Pagesが発行する`*.pages.dev`のURLをスマホで開いて確認してください。`_headers`と`_redirects`も公開資産に含まれています。
+Cloudflare Pagesが発行する`*.pages.dev`のURLをスマホで開いて確認してください。
