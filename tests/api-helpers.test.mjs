@@ -1,0 +1,10 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {validateId,sanitizeCityName,scoreFromState,sanitizeState} from '../functions/_lib/validation.js';
+test('identifier validation accepts safe ids and rejects SQL-like text',()=>{assert.equal(validateId('guest_abc-123'),'guest_abc-123');assert.throws(()=>validateId("x' OR 1=1"))});
+test('city name is trimmed and length limited',()=>{assert.equal(sanitizeCityName(' たぬき市 '),'たぬき市');assert.equal(sanitizeCityName('あ'.repeat(40)).length,24)});
+test('ranking score increases with progress and buildings',()=>{const low=scoreFromState({day:1,term:1,support:10,economy:10,life:10,environment:10,safety:10,buildings:[]});const high=scoreFromState({day:40,term:2,support:80,economy:80,life:80,environment:80,safety:80,buildings:['a','b']});assert.ok(high>low)});
+test('state sanitizer rejects arrays and oversized states',()=>{assert.throws(()=>sanitizeState([]));assert.throws(()=>sanitizeState({x:'a'.repeat(160000)}));assert.deepEqual(sanitizeState({day:2}),{day:2})});
+import {normalizeUsername,validatePassword,hashPassword,verifyPassword,parseCookies} from '../functions/_lib/auth.js';
+test('username and password validation enforce safe account input',()=>{assert.equal(normalizeUsername(' たぬき市長 '),'たぬき市長');assert.throws(()=>normalizeUsername('ab'));assert.equal(validatePassword('password8'),'password8');assert.throws(()=>validatePassword('short'))});
+test('password hashing verifies correct password only',async()=>{const encoded=await hashPassword('correct-horse');assert.equal(await verifyPassword('correct-horse',encoded.salt,encoded.hash),true);assert.equal(await verifyPassword('wrong-password',encoded.salt,encoded.hash),false)});
+test('cookie parser handles multiple cookies',()=>{assert.deepEqual(parseCookies('a=1; tm_session=abc%20123'),{a:'1',tm_session:'abc 123'})});

@@ -1,12 +1,10 @@
-# 今日の市長
+# 今日の市長 v0.6.0
 
-タヌキ秘書「ポン吉」と一緒に街を育てる、スマホ向け2D都市運営Webゲームです。
+タヌキ秘書「ポン吉」と一緒に、1日3件の政策を判断するスマホ向け都市運営ゲームです。
 
-## Cloudflare Pages公開設定
+## Cloudflare Pages設定
 
-公開資産は`site/`へ直接配置済みです。圧縮ファイルの復元や`npm install`は行いません。
-
-| 設定項目 | 入力値 |
+| 項目 | 値 |
 |---|---|
 | Framework preset | `None` |
 | Production branch | `main` |
@@ -14,28 +12,33 @@
 | Build output directory | `site` |
 | Root directory | 空欄 |
 
-`cloudflare-build.sh`は公開ファイルの存在確認とJavaScript構文チェックだけを行います。
+静的ゲーム部分はD1なしでも動作します。`site/_routes.json`により、Pages Functionsを呼び出すのは`/api/*`だけです。Service Workerも`/api/*`をキャッシュせず、認証・保存・ランキングは常にネットワークへ問い合わせます。
 
-## 公開ファイル
+## D1を使う機能
 
-- `site/index.html`：ゲーム画面
-- `site/styles.css`：スマホ向けUI
-- `site/app.js`：政策・連鎖イベント・保存・実績・地区成長
-- `site/sw.js`：オフラインキャッシュ
-- `site/manifest.webmanifest`：ホーム画面追加設定
-- `site/_headers`：セキュリティヘッダー
-- `site/_redirects`：SPAフォールバック
+D1を設定すると、ユーザー登録、ログイン、クラウド保存、全国選択率、ランキングが有効になります。
 
-## 主な機能
+1. CloudflareでD1データベース `today-mayor-db` を作成します。
+2. D1コンソールで `schema.sql` を実行します。
+3. Pagesプロジェクトの **Settings → Bindings → Add → D1 database** を開きます。
+4. Variable nameを `DB` にして、作成したデータベースを選択します。
+5. 最新コミットを再デプロイします。
 
-- 登録なしですぐ遊べる端末内オートセーブ
-- 経済・福祉・教育・環境・防災・観光・交通・デジタルの8分野
-- 6地区の成長と街並みの変化
-- 住民・分野・直近案件を考慮した重複抑制抽選
-- 即時効果、数日後の影響、失敗リスク、続報イベント
-- タヌキ秘書の通常・笑顔・心配リアクション
-- 政策履歴、実績、共有、PWA対応
+## ローカル検証
 
-## 公開後
+```bash
+npm run verify
+npm run serve
+```
 
-Cloudflare Pagesが発行する`*.pages.dev`のURLをスマホで開いて確認してください。
+## バージョン内容
+
+- v0.2: タヌキ秘書刷新、街アニメーション、突発イベント
+- v0.3: 住民関係値、議会、続報イベント
+- v0.4: 地区建設、選挙、ゲームオーバー
+- v0.5: D1クラウド保存、全国選択率、ランキング
+- v0.6: アカウント、シーズン、衣装ショップ、広告・決済プロバイダー接続口
+
+広告と決済は特定サービスをハードコードしていません。`window.TodayMayorMonetization`に`showRewardedAd`と`purchase`を実装すると有効になります。
+
+本番運用前には、Turnstileまたはレート制限、利用規約、プライバシーポリシー、決済事業者のWebhook検証を追加してください。

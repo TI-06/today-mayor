@@ -1,0 +1,3 @@
+export const json=(data,status=200,headers={})=>new Response(JSON.stringify(data),{status,headers:{'content-type':'application/json; charset=utf-8','cache-control':'no-store',...headers}});
+export async function readJson(request,maxBytes=180000){const length=Number(request.headers.get('content-length')||0);if(length>maxBytes)throw new Error('PAYLOAD_TOO_LARGE');const text=await request.text();if(text.length>maxBytes)throw new Error('PAYLOAD_TOO_LARGE');try{return text?JSON.parse(text):{}}catch{throw new Error('INVALID_JSON')}}
+export const methodNotAllowed=()=>json({ok:false,error:'METHOD_NOT_ALLOWED'},405,{allow:'GET, POST, PUT'});
