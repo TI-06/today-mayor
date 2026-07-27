@@ -4,25 +4,25 @@
 
 ## Cloudflare Pages公開設定
 
-GitHub Actionsは使用しません。Cloudflare Pagesが公開用資産を展開します。
+GitHub Actionsや`npm install`は使用しません。Cloudflare Pagesが検証済みの公開資産を`site/`へ展開します。
 
 | 設定項目 | 入力値 |
 |---|---|
 | Framework preset | `None` |
 | Production branch | `main` |
 | Build command | `bash cloudflare-build.sh` |
-| Build output directory | `dist` |
+| Build output directory | `site` |
 | Root directory | 空欄 |
 
 Cloudflare Dashboardで **Workers & Pages → Create → Pages → Import an existing Git repository** を選択し、`TI-06/today-mayor`を接続してください。
 
 ## 仕組み
 
-- `bootstrap/part-*.b64`：公開資産を圧縮・分割したデータ
-- `cloudflare-build.sh`：Cloudflare上で資産を復元
-- `dist/`：Cloudflare Pagesが公開する最終成果物
+- `cloudflare/chunks/part-00`～`part-06`：公開資産を小分けしたデータ
+- `cloudflare-build.sh`：固定順で結合し、SHA-256検証後に展開
+- `site/`：Cloudflare Pagesが公開する最終成果物
 
-外部パッケージのインストールや`npm install`は不要です。
+ハッシュが一致しない場合は、壊れた資産を公開せずビルドを停止します。
 
 ## 主な機能
 
@@ -32,7 +32,7 @@ Cloudflare Dashboardで **Workers & Pages → Create → Pages → Import an exi
 - 即時効果、数日後の影響、条件付き連鎖、季節イベント
 - 2D街並み、地区レベル、実績、市民図鑑、政策履歴
 - タヌキ秘書の表情・短評・緊急案内
-- PWA、オフラインキャッシュ、スマホ共有
+- スマホ共有
 
 ## 公開後
 
