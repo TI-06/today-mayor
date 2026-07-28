@@ -13,6 +13,12 @@ test('economic growth increases pedestrians and lit shops',()=>{
   assert.match(renderCityScene(visual),/city-scene/);
 });
 
+test('city vehicles are anchored to the road lane',()=>{
+  const visual=deriveCityVisualState(createInitialState());
+  const scene=renderCityScene(visual);
+  assert.match(scene,/class="illustration-vehicles" transform="translate\(-60 267\)"/);
+});
+
 test('finance crisis selects worried ponkichi reaction',()=>{
   const reaction=derivePonkichiReaction({...createInitialState(),treasury:-20,projectedTreasury:-35},{type:'home'});
   assert.equal(reaction.mood,'panic');

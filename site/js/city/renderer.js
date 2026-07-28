@@ -46,7 +46,7 @@ export function renderCityScene(visual){
       ${trees}${people}${tourists}${cranes}
       <path class="illustration-road" d="M0 252 Q170 236 360 258 T720 250 V300 H0Z" fill="url(#cityRoad)"/>
       <path class="illustration-road-line" d="M0 279 Q170 263 360 283 T720 275"/>
-      <g class="illustration-vehicles">${vehicles}</g>
+      <g class="illustration-vehicles" transform="translate(-60 267)">${vehicles}</g>
       ${flood}${decoration}
     </svg>
     <div class="city-scene-caption"><span>LIVE CITY</span><b>${visual.mood==='bright'?'街に活気が出ています':visual.mood==='tense'?'街に緊張が広がっています':'現在の街の様子'}</b></div>

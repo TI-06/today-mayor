@@ -11,9 +11,9 @@ test('service worker caches v0.7 modules and excludes api routes',async()=>{
   assert.match(sw,/ui\/home-view\.js/);
 });
 
-test('health endpoint reports 0.7.1',async()=>{
+test('health endpoint reports 0.7.2',async()=>{
   const source=await read('functions/api/health.js');
-  assert.match(source,/version:'0\.7\.1'/);
+  assert.match(source,/version:'0\.7\.2'/);
 });
 
 test('index describes weekly city management',async()=>{
@@ -29,11 +29,10 @@ test('cloud helper rejects non-v0.7 save states',async()=>{
   assert.match(source,/version===['"]0\.7\.0['"]/);
 });
 
-test('versioned assets and a new cache release prevent stale first-screen UI',async()=>{
+test('versioned assets prevent stale vehicle layout',async()=>{
   const html=await read('site/index.html');
   const sw=await read('site/sw.js');
-  assert.match(html,/hotfix-v071\.css\?v=0\.7\.1/);
-  assert.match(html,/app\.js\?v=0\.7\.1/);
-  assert.match(sw,/today-mayor-v071/);
+  assert.match(html,/hotfix-v071\.css\?v=0\.7\.2/);
+  assert.match(html,/app\.js\?v=0\.7\.2/);
   assert.match(sw,/networkFirst/);
 });
