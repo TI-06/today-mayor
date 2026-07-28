@@ -1,0 +1,13 @@
+ent.target.closest('[data-delegation]');if(delegation){state=setDelegationPolicy(state,delegation.dataset.delegation);save();render();return}
+  const investment=event.target.closest('[data-invest-district]');if(investment){openDistrictInvestment(investment.dataset.investDistrict);return}
+  const project=event.target.closest('[data-preview-project]');if(project){openProjectPreview(project.dataset.previewProject);return}
+  const pause=event.target.closest('[data-pause-project]');if(pause){const result=pauseProject(state,pause.dataset.pauseProject);state=result.state;save();render();return}
+  const stop=event.target.closest('[data-stop-policy]');if(stop){const result=cancelRecurringPolicy(state,stop.dataset.stopPolicy);state=result.state;save();render();showToast(result.error||'継続政策を停止しました。');return}
+  const story=event.target.closest('[data-story]');if(story){openStorySheet(story.dataset.story,story.dataset.node);return}
+});
+
+actionSheet.addEventListener('click',async event=>{
+  if(event.target.closest('[data-sheet-close]')){closeSheet();return}
+  const manifesto=event.target.closest('[data-manifesto]');if(manifesto){state=selectManifesto(state,manifesto.dataset.manifesto);save();openFocusSheet();return}
+  const focus=event.target.closest('[data-sheet-focus]');if(focus){state=selectWeeklyFocus(state,focus.dataset.sheetFocus);state={...state,weeklyGoals:createWeeklyGoals(state,Math.random)};save();closeSheet();render();return}
+  const policyChoice=event.target.closest('[data-pol

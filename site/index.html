@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#174f46">
-  <meta name="description" content="タヌキ秘書と街を育てる、1日3判断の都市運営ゲーム">
+  <meta name="description" content="タヌキ秘書ポン吉と週単位で街を育てる都市経営ゲーム">
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="icon" href="./assets/tanuki-secretary.svg">
   <link rel="stylesheet" href="./styles.css">
@@ -12,9 +12,9 @@
 </head>
 <body>
   <div id="app" class="app-shell" aria-live="polite"></div>
-  <dialog id="policy-dialog" class="sheet"></dialog>
-  <dialog id="event-dialog" class="event-dialog"></dialog>
+  <dialog id="action-sheet" class="action-sheet"></dialog>
   <dialog id="menu-dialog" class="menu-dialog"></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
   <script type="module" src="./js/app.js"></script>
 </body>
 </html>

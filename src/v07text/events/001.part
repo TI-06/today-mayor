@@ -1,0 +1,11 @@
+||[]).some(flag=>['policy-factory-priority','policy-factory-conditions'].includes(flag)),
+    preview:'工業地区の新工場から基準値を超える排水が出ているとの匿名通報が届きました。',
+    investigations:[investigation('independent','第三者監査を依頼',5,'排水データの改ざん痕跡が見つかりました。'),investigation('internal','市職員だけで確認',2,'設備の不備は確認できましたが、故意かは不明です。')],
+    responses:[response('suspend','操業停止と改善命令',12,{environment:8,economy:-5,support:4},'環境を優先して厳格に対応します。',['strict-audit']),response('deadline','改善期限を設定',5,{environment:3,economy:-1,support:1},'雇用を守りながら改善を求めます。',['soft-audit']),response('private','企業内の改善に任せる',0,{environment:-7,economy:2,support:-3},'短期的な経済損失を避けます。',['ignored-audit'])],
+    followups:[followup('clean','工場が環境設備を刷新','監査を機に設備更新が進みました。',{environment:5,economy:2},pipeline=>pipeline.flags.includes('strict-audit')||pipeline.investigationId==='independent'),followup('leak','汚染映像が拡散','対応の甘さが報道され、市民の不信が広がりました。',{environment:-8,support:-7})]
+  },
+  {
+    id:'tourism-boom',icon:'🧳',title:'人気ドラマの舞台として街が話題に',category:'観光',weight:3,condition:state=>state.weeklyFocus==='tourism'||(state.completedProjects||[]).some(id=>['port-market','station-redevelopment'].includes(id)),
+    preview:'駅前と港地区へ観光客が急増しています。受け入れ態勢を整える必要があります。',
+    investigations:[investigation('demand','観光需要を調査',3,'3週間程度の混雑と宿泊需要が見込まれます。'),investigation('quick','SNS反応だけ確認',1,'注目度は高いものの、滞在期間は不明です。')],
+    responses:[response('welcome','臨時案内所と交通対策',14,{economy:8,life:2,support:3},'混雑を抑えながら観光消費を取り込みます。',['tourism-ready']),response('campaign','記念キャンペーンのみ実施',6,{economy:5,life:-1

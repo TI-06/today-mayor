@@ -1,0 +1,24 @@
+const investigation=(id,label,cost,reveal)=>({id,label,cost,reveal});
+const response=(id,label,cost,effects,summary,flags=[])=>({id,label,cost,effects,summary,flags});
+const followup=(id,title,body,effects,condition=()=>true)=>({id,title,body,effects,condition});
+
+export const EVENTS=[
+  {
+    id:'flood-warning',icon:'🌊',title:'河川水位が急上昇',category:'防災',weight:4,condition:state=>state.safety<=60||state.weeklyFocus==='disaster'||(state.flags||[]).includes('policy-bike-paint'),
+    preview:'上流地域の記録的豪雨で、今夜から河川水位が危険域へ近づく見込みです。',
+    investigations:[
+      investigation('survey','緊急水位調査を実施',3,'堤防の弱い区間と避難対象世帯が判明しました。'),
+      investigation('watch','職員の巡回だけ行う',1,'水位上昇は確認できましたが、弱点区間までは特定できません。')
+    ],
+    responses:[
+      response('full-evacuation','全域へ早期避難を発令',25,{safety:8,support:2},'費用は大きいものの、人的被害を最小化します。',['prepared-flood']),
+      response('partial-evacuation','危険地区だけ避難',10,{safety:4,support:1},'危険度の高い地区へ避難を限定します。',['partial-flood']),
+      response('observe','経過観察を続ける',0,{safety:-8,support:-4},'予算は温存できますが、判断が遅れる可能性があります。',['ignored-flood'])
+    ],
+    followups:[
+      followup('contained','被害を抑え込みました','早期対応により冠水は限定的でした。',{safety:4,support:4},pipeline=>pipeline.flags.includes('prepared-flood')||pipeline.investigationId==='survey'),
+      followup('flooded','河川地区で冠水','避難と補強が遅れ、道路と住宅へ被害が出ました。',{safety:-10,life:-6,treasury:-20})
+    ]
+  },
+  {
+    id:'factory-audit',icon:'🏭',title:'誘致企業に環境基準違反の疑い',category:'工業',weight:3,condition:state=>state.weeklyFocus==='industry'||(state.flags

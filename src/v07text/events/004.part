@@ -1,0 +1,5 @@
+、ファンも戻りました。',{support:5},pipeline=>pipeline.flags.includes('honest-apology')||pipeline.investigationId==='log'),followup('renewed','過去投稿まで再炎上','説明不足が疑念を広げました。',{support:-6,councilApproval:-3})]
+  }
+];
+
+export const getEvent=id=>EVENTS.find(event=>event.id===id)||null;

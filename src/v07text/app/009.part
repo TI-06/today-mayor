@@ -1,0 +1,13 @@
+sabled':''}>この事業を開始する</button>`);
+}
+
+function openStorySheet(storyId,nodeId){
+  const story=getStory(storyId);const node=story?.nodes.find(item=>item.id===nodeId);if(!story||!node)return;const available=projectPhaseAvailable();
+  openSheet(node.title,`<div class="request-card"><span>💬</span><div><b>${escapeHtml(story.title)}</b><p>${escapeHtml(node.body)}</p></div></div>${available?'':'<p class="warning-copy">住民への正式回答は木曜・事業と住民フェーズで行います。</p>'}<div class="choice-list">${node.choices.map(choice=>`<button class="choice-card" data-story-choice="${choice.id}" data-story-id="${storyId}" data-node-id="${nodeId}" ${available?'':'disabled'}><span>👥</span><div><b>${escapeHtml(choice.label)}</b><small>${choice.effects.treasury?`費用 ${signedMoney(choice.effects.treasury)}`:'直接費用なし'}</small></div></button>`).join('')}</div>`);
+}
+
+
+function openStoryConfirmation(storyId,nodeId,choiceId){
+  const story=getStory(storyId);const node=story?.nodes.find(item=>item.id===nodeId);const choice=node?.choices.find(item=>item.id===choiceId);if(!story||!node||!choice)return;
+  const cost=Math.max(0,-Number(choice.effects.treasury||0));
+  openSheet('住民相談の最終確認',`${renderExpensePreview({label:`${node.title}：${choice.label}`,initialCost:cost,weeklyCost:0},state)}<p class="detail-copy">この判断は${escapeHtml(story.title)}の今後の分岐と住民関係に影響します。</p><button class="primary-action" data-execute-story="${choice.id}" data-story-id="${storyId}" data-node-id="${nodeId}" ${state.treasury<cost?'disabled':''}>この判断を確定する</button>`,'

@@ -1,0 +1,11 @@
+ta-sheet-node="${node.id}"><span>💬</span><div><b>${escapeHtml(node.title)}</b><small>${escapeHtml(node.storyTitle)}</small><p>${escapeHtml(node.body)}</p></div></button>`).join('')}</section>`:'';
+  const projects=`<section class="sheet-section"><h3>大型プロジェクト</h3><div class="choice-list">${availableProjects.slice(0,4).map(project=>`<button class="choice-card" data-sheet-project="${project.id}"><span>${project.icon}</span><div><b>${escapeHtml(project.name)}</b><small>初期 −${formatMoney(project.initialCost)}／毎週 −${formatMoney(project.weeklyCost)}／${project.durationWeeks}週</small><p>${escapeHtml(project.description)}</p><strong>実施後 ${formatMoney(state.treasury-project.initialCost)}</strong></div></button>`).join('')||'<div class="empty-state">開始できる新規事業はありません。</div>'}</div></section>`;
+  openSheet('事業と住民相談',`${stories}${projects}<button class="secondary-action" data-skip-project>今週は新規事業を始めない</button>`);
+}
+
+function openResponseSheet(){
+  const pipeline=activePipeline('response');
+  if(!pipeline){openSheet('今週の対処','<div class="empty-state">対処が必要な重大案件はありません。</div><button class="primary-action" data-skip-response>街の変化を見る</button>');return;}
+  const event=getEvent(pipeline.eventId);
+  const revealed=pipeline.revealed.map(text=>`<li>${escapeHtml(text)}</li>`).join('');
+  openSheet(event.title,`<section class="investigation-result"><b>調査で判明したこと</b><ul>${revealed||'<li>十分な情報は得られていません。</li>'}</ul></section><div class="choice-list">${event.responses.map(option=>`<button class="choice-card" 

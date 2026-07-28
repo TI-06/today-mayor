@@ -1,0 +1,37 @@
+  }catch{cloud.available=false}
+    finally{cloud.syncing=false;render()}
+  },650);
+}
+
+function showToast(message,type='info'){
+  toast.textContent=message;
+  toast.className=`toast show ${type}`;
+  clearTimeout(showToast.timer);
+  showToast.timer=setTimeout(()=>{toast.className='toast'},2600);
+}
+
+function openSheet(title,content,modifier=''){
+  if(actionSheet.open)actionSheet.close();
+  actionSheet.className=`action-sheet ${modifier}`;
+  actionSheet.innerHTML=`<div class="sheet-grabber"></div><header class="sheet-header"><div><p>WEEKLY DECISION</p><h2>${escapeHtml(title)}</h2></div><button class="close-action" data-sheet-close aria-label="閉じる">×</button></header><div class="sheet-body">${content}</div>`;
+  actionSheet.showModal();
+}
+
+function closeSheet(){if(actionSheet.open)actionSheet.close()}
+const activePipeline=stage=>state.eventPipelines.find(item=>item.stage===stage);
+const projectPhaseAvailable=()=>state.phase==='project';
+
+function resolveDueFollowups(){
+  for(const pipeline of [...state.eventPipelines]){
+    if(pipeline.stage==='followup'&&(pipeline.followupWeek??Infinity)<=state.week){
+      const result=resolveEventFollowup(state,pipeline.eventId,Math.random);
+      if(!result.error)state=result.state;
+    }
+  }
+}
+
+function viewMarkup(){
+  const common={cloud,ranking,reaction:uiState.reaction};
+  if(activeTab==='home')return renderHomeView(state,common);
+  if(activeTab==='city')return renderCityView(state,common);
+  if(activeTab==='policy')return renderPolicyView

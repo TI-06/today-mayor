@@ -1,0 +1,15 @@
+t-grid">${FOCUS_OPTIONS.map(item=>`<button class="focus-card ${state.weeklyFocus===item.id?'selected':''}" data-sheet-focus="${item.id}" ${!state.manifesto?'disabled':''}><span>${item.icon}</span><b>${escapeHtml(item.label)}</b><small>${escapeHtml(item.description)}</small></button>`).join('')}</div></section>`;
+  openSheet('週の方針',manifesto+focuses);
+}
+
+function openPolicySheet(){
+  const policy=uiState.currentPolicyId?getPolicyCase(uiState.currentPolicyId):choosePolicyCase(state,Math.random);
+  uiState.currentPolicyId=policy.id;
+  const choices=policy.choices.map(option=>`<button class="choice-card policy-choice" data-policy-choice="${option.id}"><span>${policy.icon}</span><div><b>${escapeHtml(option.label)}</b><small>初期 −${formatMoney(option.initialCost)}／毎週 −${formatMoney(option.weeklyCost)}</small><p>${escapeHtml(option.knownEffect)}</p><em>未確認：${escapeHtml(option.uncertainty)}</em><strong>実施後 ${formatMoney(state.treasury-option.initialCost)}</strong></div></button>`).join('');
+  openSheet(policy.title,`<div class="request-card"><span>${policy.icon}</span><div><b>${escapeHtml(policy.requester)}</b><p>${escapeHtml(policy.body)}</p></div></div><div class="choice-list">${choices}</div>`,'decision-sheet');
+}
+
+
+function openPolicyConfirmation(choiceId){
+  const policy=getPolicyCase(uiState.currentPolicyId);const option=policy?.choices.find(item=>item.id===choiceId);if(!policy||!option)return;
+  openSheet('政策支出の最終確認',`${renderExpensePreview({label:`${policy.title}：${option.labe

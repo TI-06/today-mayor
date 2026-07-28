@@ -1,0 +1,10 @@
+fe:-2},['student-deny'])]),
+      node('voice',4,'若者議会を開きたい','高校生が市政へ提案できる場を求めています。',[choice('council','若者議会を常設',7,{treasury:-5,support:3},['student-council']),choice('event','年1回だけ開催',3,{support:1},['student-event']),choice('survey','アンケートだけ行う',-2,{support:-1},['student-survey'])]),
+      node('future',7,'卒業後も街に残れるか','若者向け仕事と住居の支援策を提案されました。',[choice('startup','若者起業と住宅支援',8,{treasury:-20,economy:5,life:5},['student-ending-stay']),choice('internship','地元企業インターン',5,{treasury:-8,economy:3},['student-ending-link']),choice('information','情報サイトだけ作る',-2,{life:1},['student-ending-leave'])])
+    ],
+    endings:[{id:'stay',label:'若者が戻る街',requires:['student-ending-stay']},{id:'link',label:'地域企業とつながる街',requires:['student-ending-link']},{id:'leave',label:'卒業とともに離れる街',requires:['student-ending-leave']}]
+  }
+];
+
+export const getStory=id=>STORIES.find(story=>story.id===id)||null;
+export const getResident=id=>RESIDENTS.find(resident=>resident.id===id)||null;

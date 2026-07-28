@@ -1,0 +1,17 @@
+    @media(prefers-reduced-motion:reduce){#ponkichi-eyes,#ponkichi-tail,#ponkichi-ears,#ponkichi-mouth,#ponkichi-binder,#ponkichi-leaf-hat{animation:none}}
+  </style>
+  <defs>
+    <linearGradient id="fur" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d9a770"/><stop offset="1" stop-color="#a96f42"/></linearGradient>
+    <linearGradient id="uniform" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#33586e"/><stop offset="1" stop-color="#173648"/></linearGradient>
+    <linearGradient id="leaf" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8bc782"/><stop offset="1" stop-color="#3d8d64"/></linearGradient>
+    <filter id="soft"><feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#1b3029" flood-opacity=".22"/></filter>
+  </defs>
+  <ellipse cx="160" cy="398" rx="104" ry="17" fill="#16322e" opacity=".16"/>
+  <g id="ponkichi-tail" filter="url(#soft)">
+    <path d="M236 278c63-30 86 12 62 52-19 31-70 47-104 20 35-9 56-23 63-39 7-15-2-25-21-33z" fill="url(#fur)" stroke="#533d31" stroke-width="7"/>
+    <path d="M273 296c13 4 23 12 28 24-7 10-17 18-28 24-2-18-8-34-18-47 6-2 12-2 18-1z" fill="#3d342f"/>
+    <path d="M236 332c13 6 25 12 35 20-11 6-24 11-37 13-7-8-13-17-18-26 7-4 13-6 20-7z" fill="#f0dfc7"/>
+  </g>
+  <g id="ponkichi-body" filter="url(#soft)">
+    <path d="M91 246c13-29 38-44 69-44s56 15 69 44l15 95c5 34-15 55-45 55h-78c-30 0-50-21-45-55z" fill="url(#uniform)" stroke="#18323f" stroke-width="7"/>
+    <path d="M136 213h48l8 40-32 25-32-25z" 

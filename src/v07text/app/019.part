@@ -1,0 +1,17 @@
+):await loginUser(data.get('username'),data.get('password'));await afterAuth(result.user)}catch(error){const messages={USERNAME_TAKEN:'その市長名は使用されています。',INVALID_CREDENTIALS:'市長名またはパスワードが違います。',INVALID_USERNAME:'市長名は3〜20文字で入力してください。',INVALID_PASSWORD:'パスワードは8〜72文字で入力してください。'};openAccount(messages[error.message]||'認証に失敗しました。')}
+});
+
+async function initCloud(){
+  const status=await getCloudStatus();cloud.available=Boolean(status.database);
+  if(cloud.available){
+    try{
+      const me=await getCurrentUser();cloud.user=me.user;
+      const remote=await loadV07CloudState();if(isV07State(remote.state))state=normalizeState(remote.state);
+      const ranks=await fetchRanking();ranking=ranks.ranking||[];
+    }catch{cloud.available=false}
+  }
+  save();render();
+}
+
+if('serviceWorker' in navigator)navigator.serviceWorker.register('./sw.js').catch(()=>{});
+save();render();initCloud();

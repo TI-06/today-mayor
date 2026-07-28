@@ -1,0 +1,20 @@
+fill="#f4f0e8"/>
+    <path d="M151 226h18l8 53-17 18-17-18z" fill="#c95855"/>
+    <path d="M103 281h114" stroke="#5f8394" stroke-width="5" stroke-linecap="round" opacity=".7"/>
+    <circle cx="113" cy="285" r="7" fill="#d8c18f"/><circle cx="207" cy="285" r="7" fill="#d8c18f"/>
+    <path d="M107 388v13M213 388v13" stroke="#3c332e" stroke-width="16" stroke-linecap="round"/>
+  </g>
+  <g id="ponkichi-arms">
+    <path d="M91 270c-22 8-31 29-20 46 10 15 29 15 43 1" fill="none" stroke="#a96f42" stroke-width="25" stroke-linecap="round"/>
+    <path d="M229 270c23 8 31 29 21 46-10 15-29 15-44 1" fill="none" stroke="#a96f42" stroke-width="25" stroke-linecap="round"/>
+    <circle cx="88" cy="316" r="15" fill="#f5e8d6" stroke="#533d31" stroke-width="5"/>
+    <circle cx="232" cy="316" r="15" fill="#f5e8d6" stroke="#533d31" stroke-width="5"/>
+  </g>
+  <g id="ponkichi-binder" transform="translate(96 304)">
+    <rect width="128" height="69" rx="10" fill="#f4f7f3" stroke="#315a63" stroke-width="7"/>
+    <rect x="48" y="-6" width="32" height="15" rx="6" fill="#d6a94a"/>
+    <path d="M22 23h84M22 40h65M22 55h76" stroke="#88a1a0" stroke-width="5" stroke-linecap="round"/>
+  </g>
+  <g id="ponkichi-head" filter="url(#soft)">
+    <path d="M87 92C71 56 93 34 123 55c22-15 52-15 74 0 30-21 52 1 36 37 21 21 30 49 24 81-7 42-45 72-97 72s-90-30-97-72c-6-32 3-60 24-81z" fill="url(#fur)" stroke="#533d31" stroke-width="8"/>
+    <path d="M89 95C76 64 91 48 116 65l-11 43zM231 95c13-31-2-47-27-30l11 43z" fill="#

@@ -1,0 +1,25 @@
+b5af;box-shadow:0 0 0 4px rgba(166,181,175,.15)}
+.cloud-dot.online{background:#42a27e;box-shadow:0 0 0 4px rgba(66,162,126,.15)}
+.cloud-dot.syncing{animation:pulse 1s infinite}
+.menu-action{width:44px;height:44px;border:1px solid var(--line);border-radius:14px;background:#fff;color:var(--ink);font-size:22px}
+.money-bar{position:sticky;top:68px;z-index:35;margin:0;padding:9px 12px;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr) auto;gap:8px;align-items:center;background:#163f37;color:#fff;border-bottom:1px solid rgba(255,255,255,.14);box-shadow:0 7px 18px rgba(19,55,48,.13)}
+.money-bar.status-warning{background:#62542f}.money-bar.status-crisis,.money-bar.status-bankrupt{background:#66342e}
+.money-main span,.money-sub span,.leaf-wallet span{display:block;font-size:9px;opacity:.78}
+.money-main strong{display:block;font-size:17px;line-height:1.2;white-space:nowrap}
+.money-sub{display:grid;gap:2px;font-size:10px}.money-sub b{font-weight:800;white-space:nowrap}
+.leaf-wallet{padding:5px 8px;border-radius:11px;background:rgba(255,255,255,.12);text-align:center}.leaf-wallet b{display:block;font-size:12px}
+.view{padding:13px 13px 18px;display:grid;gap:12px}.home-view{padding-bottom:86px}
+.week-heading,.section-heading{display:flex;align-items:end;justify-content:space-between;gap:12px}
+.week-heading span,.section-heading span{font-size:10px;color:var(--muted)}
+.week-heading h2,.section-heading h2,.section-heading h3{margin:2px 0 0;font-size:17px}
+.week-heading>b{font-size:10px;padding:6px 9px;border-radius:999px;background:#e3f0eb;color:var(--green);white-space:nowrap}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow)}
+.city-scene{height:176px;border-radius:23px;position:relative;overflow:hidden;background:linear-gradient(#73bdcc 0 52%,#aed08d 52% 72%,#586963 72%);box-shadow:var(--shadow);isolation:isolate}
+.city-storm{background:linear-gradient(#5e7281 0 52%,#819e80 52% 72%,#4b5c58 72%)}
+.city-cloudy{background:linear-gradient(#8cb9c1 0 52%,#b3cb91 52% 72%,#586963 72%)}
+.city-sky{position:absolute;inset:0 0 48%}.city-sun{position:absolute;right:35px;top:18px;width:38px;height:38px;border-radius:50%;background:#ffe295;box-shadow:0 0 28px #ffe295;animation:sunPulse 4s ease-in-out infinite}.city-storm .city-sun{opacity:.15}
+.city-cloud{position:absolute;width:78px;height:20px;border-radius:30px;background:#fff;opacity:.78;animation:cloudMove 18s linear infinite}.city-cloud:before,.city-cloud:after{content:"";position:absolute;border-radius:50%;background:inherit}.city-cloud:before{width:31px;height:31px;left:13px;top:-12px}.city-cloud:after{width:39px;height:39px;right:10px;top:-18px}.cloud-a{top:31px;left:-100px}.cloud-b{top:70px;left:-150px;transform:scale(.7);animation-delay:-8s}.city-storm .city-cloud{background:#c8d2d5;opacity:.92}
+.city-backdrop{position:absolute;left:6%;right:6%;bottom:46px;height:92px;display:flex;align-items:flex-end;justify-content:space-around}.tower{display:block;width:25%;border:3px solid rgba(30,65,58,.4);border-bottom:0;border-radius:6px 6px 0 0;background:#eed09b;position:relative}.tower:after{content:"";position:absolute;inset:12px 8px;background:repeating-linear-gradient(#3e7e75 0 5px,transparent 5px 13px)}.tower-a{height:68px}.tower-b{height:92px;background:#e8b87e}.tower-c{height:76px;background:#d7dec0}
+.city-block{position:absolute;left:8%;bottom:45px;width:44%;height:51px;border-radius:7px 7px 0 0;background:#f5ddbd;border:3px solid rgba(38,72,65,.45);border-bottom:0}.shop-row{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;padding:16px 7px 0}.shop-window{height:19px;border-radius:3px 3px 0 0;background:#475b58}.shop-window.lit{background:#ffd96c;box-shadow:0 0 8px rgba(255,217,108,.75)}.shop-window.closed{background:#53605f;opacity:.55}
+.city-road{position:absolute;left:0;right:0;bottom:0;height:47px;background:#4b5c58}.city-road:after{content:"";position:absolute;left:3%;right:3%;top:24px;border-top:2px dashed #f7edb3}.city-car,.city-truck{position:absolute;bottom:12px;width:38px;height:15px;border-radius:6px 9px 3px 3px;background:#e85d50;animation:drive 9s linear infinite}.city-car:before,.city-car:after,.city-truck:before,.city-truck:after{content:"";position:absolute;bottom:-4px;width:8px;height:8px;border-radius:50%;background:#1f2b2a}.city-car:before,.city-truck:before{left:5px}.city-car:after,.city-truck:after{right:5px}.city-truck{width:46px;background:#e5b956;animation-delay:var(--delay)}
+.city-tree

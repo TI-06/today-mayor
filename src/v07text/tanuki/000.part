@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 420" role="img" aria-labelledby="title desc">
+  <title id="title">タヌキ秘書ポン吉</title>
+  <desc id="desc">大きな目と縞尻尾、紺色の市役所制服を着た3頭身のアニメ調タヌキ秘書</desc>
+  <style>
+    #ponkichi-eyes{transform-box:fill-box;transform-origin:center;animation:ponkichiBlink 4.8s infinite}
+    #ponkichi-tail{transform-box:fill-box;transform-origin:18% 72%;animation:ponkichiTail 2.2s ease-in-out infinite}
+    #ponkichi-ears{transform-box:fill-box;transform-origin:center bottom;animation:ponkichiEar 5.4s ease-in-out infinite}
+    #ponkichi-mouth{transform-box:fill-box;transform-origin:center top;animation:ponkichiMouth 1.8s ease-in-out infinite}
+    #ponkichi-binder{transform-box:fill-box;transform-origin:center bottom;animation:ponkichiBinder 3.2s ease-in-out infinite}
+    #ponkichi-leaf-hat{transform-box:fill-box;transform-origin:center bottom;animation:ponkichiHat 3.1s ease-in-out infinite}
+    @keyframes ponkichiBlink{0%,43%,47%,100%{transform:scaleY(1)}45%{transform:scaleY(.08)}}
+    @keyframes ponkichiTail{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(7deg)}}
+    @keyframes ponkichiEar{0%,87%,100%{transform:rotate(0)}90%{transform:rotate(-2.5deg)}94%{transform:rotate(2deg)}}
+    @keyframes ponkichiMouth{0%,55%,100%{transform:scaleY(1)}65%{transform:scaleY(.82)}}
+    @keyframes ponkichiBinder{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+    @keyframes ponkichiHat{0%,100%{transform:rotate(-1deg)}50%{transform:rotate(2deg)}}

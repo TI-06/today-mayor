@@ -1,0 +1,24 @@
+s',line:goals.completed.length?`今週は目標を${goals.completed.length}件達成しました！`:'週次決算をまとめました。'};
+  save();render();
+}
+
+function finishSummaryPhase(){
+  const term=evaluateTerm(state);state=term.state;
+  if(state.gameStatus==='active')state=advancePhase({...state,phase:'summary'},{type:'continue'}).state;
+  state={...state,weeklyGoals:[]};uiState.currentPolicyId=null;uiState.reaction=term.election?{type:term.election.won?'success':'warning',line:`選挙評価は${term.election.score}点でした。`}:null;
+  save();activeTab='home';render();
+}
+
+function handlePhaseAction(){
+  if(state.phase==='focus')openFocusSheet();
+  else if(state.phase==='policy')openPolicySheet();
+  else if(state.phase==='preview')openPreviewSheet();
+  else if(state.phase==='project')openProjectSheet();
+  else if(state.phase==='response')openResponseSheet();
+  else if(state.phase==='city')finishCityPhase();
+  else finishSummaryPhase();
+}
+
+function openMenu(message=''){
+  if(menuDialog.open)menuDialog.close();
+  menuDialog.innerHTML=`<header><div><p>CITY HALL MENU</p><h2>市長室メニュー</h2></div><button data-menu-close>×</button></header>${message?`<p class="form-message">${escapeHtml(message)}</p>`:''}<section class="menu-status"><b>${cloud.user?escapeHtml(cloud.user.username):'ゲスト市長'}</b><small>${cloud.available?'クラウド保存を利用できます':'端末保存モード'}</small></section><button class="menu-row" data-menu-view="account">👤 アカウント・クラウド保存</button><button class="menu-row" data-menu-view="cosmetics">🍃 ポン吉の衣装</button><button class="menu-row danger" data-reset>

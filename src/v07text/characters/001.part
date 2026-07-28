@@ -1,0 +1,12 @@
+shop-ending-bright']),choice('local','地域運営に任せる',3,{economy:2},['shop-ending-local']),choice('deny','交通問題を理由に断る',-4,{support:-2},['shop-ending-fade'])],['shop-coexist','shop-protect'])
+    ],
+    endings:[{id:'revival',label:'世代をつなぐ商店街',requires:['shop-ending-bright']},{id:'independent',label:'地域で続く商店街',requires:['shop-ending-local']},{id:'decline',label:'静かに消える商店街',requires:['shop-mall','shop-ending-fade']}]
+  },
+  {
+    id:'young-parent',residentId:'parent',title:'子育て世帯の暮らし',
+    nodes:[
+      node('opening',1,'保育園の送迎が大変','駅と保育園を結ぶ交通手段を求める声が届きました。',[choice('shuttle','送迎バスを試験運行',7,{treasury:-12,life:5},['parent-shuttle']),choice('taxi','タクシー補助',3,{treasury:-6,life:3},['parent-taxi']),choice('none','各家庭に任せる',-5,{life:-3},['parent-none'])]),
+      node('shortage',4,'保育士不足が深刻化','施設はあっても人が足りず、受け入れ枠を増やせません。',[choice('allowance','市独自手当を出す',8,{treasury:-18,life:7},['parent-allowance']),choice('training','研修費を支援',4,{treasury:-8,life:3},['parent-training']),choice('wait','国の制度を待つ',-6,{life:-4},['parent-wait'])]),
+      node('community',7,'地域で子どもを見守る','高齢者と子育て世帯をつなぐ交流拠点の提案です。',[choice('hub','支援拠点を整備',7,{treasury:-15,life:6,support:3},['parent-ending-hub']),choice('volunteer','ボランティア制度',4,{life:3},['parent-ending-network']),choice('decline','安全面を理由に見送る',-3,{support:-1},['parent-ending-alone'])])
+    ],
+    endings:[{id:'hub',label:'子育て支援の街',requires:['parent-ending-hub']},{id:'network',label:'助け合う地域',requires:['parent-ending-network']},{id:'alone',label:'孤立する家庭',requires:['parent-ending

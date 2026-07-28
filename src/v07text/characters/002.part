@@ -1,0 +1,15 @@
+-alone']}]
+  },
+  {
+    id:'factory-worker',residentId:'worker',title:'工業地区の未来',
+    nodes:[
+      node('opening',1,'工場の受注が減っている','設備更新のための低利融資を相談されました。',[choice('loan','市が融資枠を作る',6,{treasury:-16,economy:5},['worker-loan']),choice('advice','専門家を派遣',3,{treasury:-5,economy:2},['worker-advice']),choice('decline','民間金融に任せる',-4,{economy:-2},['worker-decline'])]),
+      node('automation',4,'自動化で雇用が揺れる','設備更新により生産性は上がる一方、配置転換が必要です。',[choice('reskill','再教育を支援',7,{treasury:-10,economy:4,life:3},['worker-reskill']),choice('subsidy','雇用維持補助',4,{treasury:-14,economy:2},['worker-subsidy']),choice('market','企業判断に任せる',-6,{economy:3,life:-4},['worker-market'])]),
+      node('green',7,'環境対応型工場への転換','排出量を減らす大型設備への更新提案です。',[choice('green-invest','共同投資する',7,{treasury:-22,economy:4,environment:7},['worker-ending-green']),choice('conditions','基準だけ強化する',2,{environment:3,economy:-1},['worker-ending-lean']),choice('delay','景気回復を待つ',-4,{environment:-3},['worker-ending-old'])])
+    ],
+    endings:[{id:'green',label:'環境産業都市',requires:['worker-ending-green']},{id:'lean',label:'小さく強い工業地区',requires:['worker-ending-lean']},{id:'old',label:'更新が遅れる工業地区',requires:['worker-ending-old']}]
+  },
+  {
+    id:'student-council',residentId:'student',title:'若者が残りたい街',
+    nodes:[
+      node('opening',1,'放課後に集まれる場所がない','高校生から公共施設の空きスペース活用を提案されました。',[choice('open-space','学習交流室を作る',7,{treasury:-8,life:4},['student-space']),choice('weekend','週末だけ開放',3,{treasury:-3,life:2},['student-weekend']),choice('deny','管理負担で見送る',-5,{li

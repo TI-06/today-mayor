@@ -1,0 +1,16 @@
+confirmation-sheet');
+}
+
+function openFinanceSheet(){
+  const status=financeStatus(state);
+  const latest=state.weekSummaries[0];
+  openSheet('市の財政',`<section class="finance-detail"><div><span>現在予算</span><strong>${formatMoney(state.treasury)}</strong></div><div><span>予備費</span><strong>${formatMoney(state.reserveFund)}</strong></div><div><span>市債残高</span><strong>${formatMoney(state.debt)}</strong></div><div><span>翌週予測</span><strong>${formatMoney(state.projectedTreasury)}</strong></div><p class="finance-status status-${status}">財政状態：${status==='healthy'?'安定':status==='warning'?'注意':status==='crisis'?'危機':'破綻'}</p></section>${latest?`<section class="sheet-section"><h3>直近の週次決算</h3><p>収入 ${formatMoney(latest.income)}／支出 ${formatMoney(latest.expense)}／収支 ${signedMoney(latest.balance)}</p></section>`:''}<section class="sheet-section"><h3>財政操作</h3><div class="finance-actions"><button class="secondary-action" data-bond="100">市債を100億円発行</button><button class="secondary-action" data-reserve="20">予備費へ20億円積立</button><button class="secondary-action" data-reserve="-20">予備費を20億円取り崩す</button></div></section>`);
+}
+
+function finishCityPhase(){
+  let advanced=advanceProjects(state);state=advanced.state;
+  resolveDueFollowups();
+  state={...state,cityVisualState:deriveCityVisualState(state)};
+  const result=advancePhase({...state,phase:'city'},{type:'continue'});state=result.state;
+  const goals=evaluateGoals(state);state=goals.state;
+  uiState.reaction={type:goals.completed.length?'success':'new

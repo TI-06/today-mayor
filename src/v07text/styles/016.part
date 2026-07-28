@@ -1,0 +1,4 @@
+.district-actions{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}.district-actions .small-action{margin-top:0;min-height:47px}.invest-action{background:#fff5df;color:#8a6322}.district-actions>small{grid-column:1/-1;text-align:center;color:var(--muted);font-size:8px}
+
+.close-action{width:44px;height:44px}.menu-dialog header button{width:44px;height:44px}
+.confirmation-copy{padding:12px;border-radius:15px;background:#eef5f2}.confirmation-copy b{display:block;font-size:11px}.confirmation-copy p{margin:5px 0;font-size:10px;line-height:1.55}.confirmation-copy em{font-size:9px;font-style:normal;color:#866635}

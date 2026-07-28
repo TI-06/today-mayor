@@ -1,0 +1,23 @@
+6a4735"/>
+    <path d="M103 132c14-22 36-30 57-18 21-12 43-4 57 18-5 15-13 27-24 35 4 14-3 35-33 35s-37-21-33-35c-11-8-19-20-24-35z" fill="#f3dfc5"/>
+    <path d="M103 117c13-20 37-29 56-16-12 12-19 27-20 44-17 2-31-7-36-28zM217 117c-13-20-37-29-56-16 12 12 19 27 20 44 17 2 31-7 36-28z" fill="#44372f"/>
+  </g>
+  <g id="ponkichi-eyes">
+    <ellipse cx="126" cy="130" rx="14" ry="19" fill="#fff"/>
+    <ellipse cx="194" cy="130" rx="14" ry="19" fill="#fff"/>
+    <ellipse cx="128" cy="134" rx="8" ry="12" fill="#243036"/>
+    <ellipse cx="192" cy="134" rx="8" ry="12" fill="#243036"/>
+    <circle cx="132" cy="128" r="3.5" fill="#fff"/><circle cx="196" cy="128" r="3.5" fill="#fff"/>
+    <path d="M111 111q15-10 29-1M209 111q-15-10-29-1" fill="none" stroke="#513b30" stroke-width="6" stroke-linecap="round"/>
+  </g>
+  <g id="ponkichi-mouth">
+    <path d="M149 158q11-9 22 0-3 13-11 13t-11-13z" fill="#4e352f"/>
+    <path d="M143 178q17 16 34 0" fill="none" stroke="#4e352f" stroke-width="6" stroke-linecap="round"/>
+    <path d="M151 184q9 7 18 0" fill="none" stroke="#df7772" stroke-width="5" stroke-linecap="round"/>
+  </g>
+  <g id="ponkichi-ears">
+    <path d="M93 82q-8-27 20-18" fill="none" stroke="#d9a770" stroke-width="10" stroke-linecap="round"/>
+    <path d="M227 82q8-27-20-18" fill="none" stroke="#d9a770" stroke-width="10" stroke-linecap="round"/>
+  </g>
+  <g id="ponkichi-leaf-hat" filter="url(#soft)">
+    <path d="M160 54c-19-35 8-52 45-36-3 34-20 50-45 36z" fill="url(#leaf)" stroke=
