@@ -11,7 +11,7 @@ import {availableStoryNodes,resolveStoryChoice} from './characters/stories.js';
 import {getStory} from './characters/content.js';
 import {deriveCityVisualState} from './city/visual-state.js';
 import {renderMoneyBar,renderExpensePreview,escapeHtml,formatMoney,signedMoney} from './ui/components.js';
-import {renderHomeView} from './ui/home-view.js?v=0.7.1';
+import {renderHomeView} from './ui/home-view.js?v=0.8.0';
 import {renderCityView} from './ui/city-view.js';
 import {renderPolicyView} from './ui/policy-view.js';
 import {renderResidentView} from './ui/resident-view.js';
