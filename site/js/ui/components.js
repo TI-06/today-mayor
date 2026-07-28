@@ -38,6 +38,16 @@ export function renderMetrics(state){
   return `<section class="metric-strip">${items.map(([key,label,icon])=>`<article><span>${icon} ${label}</span><strong>${Math.round(state[key])}</strong><i><b style="width:${Math.max(0,Math.min(100,state[key]))}%"></b></i></article>`).join('')}</section>`;
 }
 
+export function renderHomeMetrics(state){
+  const appeal=Math.round(((Number(state.life)||0)+(Number(state.environment)||0)+(Number(state.safety)||0))/3);
+  const items=[
+    {label:'市民満足度',value:Math.round(state.support||0),icon:'👥',tone:'green',note:(state.support||0)>=65?'良好':(state.support||0)>=45?'安定':'要注意'},
+    {label:'経済発展度',value:Math.round(state.economy||0),icon:'📊',tone:'blue',note:(state.economy||0)>=65?'上昇中':(state.economy||0)>=45?'横ばい':'低迷中'},
+    {label:'まちの魅力度',value:appeal,icon:'♥',tone:'rose',note:appeal>=65?'上昇中':appeal>=45?'安定':'改善余地'}
+  ];
+  return `<section class="home-metric-grid" aria-label="まちの主要指標">${items.map(item=>`<article class="home-metric-card tone-${item.tone}"><div class="home-metric-title"><span>${item.icon}</span><b>${item.label}</b></div><strong>${item.value}<small>%</small></strong><p>${item.note}</p><i><b style="width:${Math.max(0,Math.min(100,item.value))}%"></b></i></article>`).join('')}</section>`;
+}
+
 export const PHASE_LABELS={focus:'月曜・重点方針',policy:'火曜・重要政策',preview:'水曜・予告と調査',project:'木曜・事業と住民',response:'金曜・緊急対応',city:'土曜・街の変化',summary:'日曜・週次決算'};
 export const PHASE_ACTIONS={focus:'今週の方針を決める',policy:'重要政策を判断する',preview:'予告を確認・調査する',project:'大型事業・住民相談へ',response:'調査結果から対処する',city:'街の変化を確認する',summary:'決算を確認して次週へ'};
 
