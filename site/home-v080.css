@@ -19,9 +19,9 @@ body{margin:0;padding:0;background:linear-gradient(180deg,#e8f0ec 0%,#f8faf7 34%
 .leaf-wallet{min-width:62px;padding:9px 10px;border-radius:17px;background:rgba(255,255,255,.12);text-align:center}.leaf-wallet span{display:block;font-size:9px;color:#d8eee7}.leaf-wallet b{font-size:17px;color:#fff}
 
 .premium-home{padding:0 12px calc(102px + env(safe-area-inset-bottom));gap:14px}
-.premium-action-card{position:relative;min-height:334px;border:2px solid #efcf82;border-radius:27px;background:radial-gradient(circle at 82% 30%,rgba(255,225,135,.38),transparent 34%),linear-gradient(145deg,#fffdf8 0%,#fff8e8 62%,#fff2d3 100%);overflow:hidden;box-shadow:0 16px 34px rgba(111,78,28,.13)}
+.premium-action-card{position:relative;display:block;min-height:334px;border:2px solid #efcf82;border-radius:27px;background:radial-gradient(circle at 82% 30%,rgba(255,225,135,.38),transparent 34%),linear-gradient(145deg,#fffdf8 0%,#fff8e8 62%,#fff2d3 100%);overflow:hidden;box-shadow:0 16px 34px rgba(111,78,28,.13);isolation:isolate}
 .premium-action-card:before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(224,176,73,.16) 1px,transparent 1px);background-size:14px 14px;mask-image:linear-gradient(90deg,#000 0%,transparent 75%)}
-.premium-action-copy{position:relative;z-index:3;width:61%;padding:18px 0 18px 18px}
+.premium-action-copy{position:relative;z-index:3;box-sizing:border-box;width:61%;padding:18px 0 18px 18px}
 .premium-action-meta{display:flex;align-items:center;gap:7px;margin-bottom:13px}
 .action-ribbon{display:inline-flex;align-items:center;min-height:30px;padding:0 13px;border-radius:8px 16px 16px 8px;background:linear-gradient(180deg,#bc6d22,#965116);color:#fff7dc;font-size:10px;font-weight:900;box-shadow:0 5px 12px rgba(128,69,21,.2)}
 .premium-action-card .phase-status-button{min-height:30px;padding:5px 9px;border:1px solid #e4c579;background:rgba(255,255,255,.82);font-size:8px;color:#795016;box-shadow:none}
