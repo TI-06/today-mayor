@@ -1,6 +1,6 @@
-import {renderCityScene} from '../city/renderer.js?v=0.8.0';
+import {renderCityScene} from '../city/renderer.js?v=0.8.1';
 import {deriveCityVisualState} from '../city/visual-state.js';
-import {derivePonkichiReaction,renderPonkichi} from '../characters/ponkichi.js?v=0.8.0';
+import {derivePonkichiReaction,renderPonkichi} from '../characters/ponkichi.js?v=0.8.1';
 import {escapeHtml,renderGoalList,renderHomeMetrics,PHASE_LABELS,PHASE_ACTIONS,formatMoney,signedMoney} from './components.js';
 import {getEvent} from '../events/content.js';
 
@@ -29,7 +29,7 @@ export function renderHomeView(state,uiState={}){
     ?`<section class="panel goal-panel"><div class="section-heading"><h3>今週の目標</h3><span>${state.weeklyGoals.filter(goal=>goal.status==='completed').length}/${state.weeklyGoals.length}</span></div>${renderGoalList(state.weeklyGoals)}</section>`
     :`<section class="goal-onboarding"><span>🎯</span><div><b>今週の目標はまだありません</b><p>方針を決めると今週の目標が自動で設定されます。</p></div></section>`;
   return `<main class="view home-view premium-home">
-    <section class="premium-action-card next-action-card">
+    <section class="premium-action-card">
       <div class="premium-action-copy">
         <div class="premium-action-meta"><span class="action-ribbon">🍃 ${guide.eyebrow}</span><button class="phase-status-button ${state.weeklyFocus?'is-set':''}" data-action="phase-action">${state.weeklyFocus?'方針設定済み':'方針未設定'}</button></div>
         <small class="premium-week-label">第${state.week}週・第${state.term}期</small>
