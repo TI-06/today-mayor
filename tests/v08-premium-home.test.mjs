@@ -18,6 +18,15 @@ test('premium home puts the next action first and keeps one clear action',()=>{
   assert.doesNotMatch(html,/ponkichi-panel/);
 });
 
+test('premium action card never inherits the legacy two-column grid',async()=>{
+  const html=renderHomeView(createInitialState());
+  const css=await read('site/home-v080.css');
+  assert.match(html,/class="premium-action-card"/);
+  assert.doesNotMatch(html,/class="premium-action-card next-action-card"/);
+  assert.match(css,/\.premium-action-card\{[^}]*display:block/);
+  assert.match(css,/\.premium-action-copy\{[^}]*width:61%/);
+});
+
 test('premium home shows exactly three summary metrics',()=>{
   const html=renderHomeView(createInitialState());
   assert.equal((html.match(/home-metric-card/g)||[]).length,3);
@@ -31,7 +40,7 @@ test('ponkichi home asset exposes anime movement groups',async()=>{
   for(const id of ['ponkichi-float','ponkichi-wave-arm','ponkichi-tail','ponkichi-eyes','ponkichi-ears','ponkichi-mouth','ponkichi-leaf'])assert.match(source,new RegExp(`id="${id}"`));
   for(const keyframe of ['@keyframes float','@keyframes wave','@keyframes tail','@keyframes blink'])assert.match(source,new RegExp(keyframe.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')));
   const html=renderPonkichi(derivePonkichiReaction(createInitialState()),'classic');
-  assert.match(html,/ponkichi-home-v080\.svg\?v=0\.8\.0/);
+  assert.match(html,/ponkichi-home-v080\.svg\?v=0\.8\.1/);
 });
 
 test('generated application shell uses compact premium header and nav',async()=>{
@@ -43,12 +52,12 @@ test('generated application shell uses compact premium header and nav',async()=>
   assert.doesNotMatch(source,/account-chip/);
 });
 
-test('v0.8 assets are cache-busted and included in deployment',async()=>{
+test('v0.8.1 assets are cache-busted and included in deployment',async()=>{
   const [html,sw,build,pkg]=await Promise.all([read('site/index.html'),read('site/sw.js'),read('cloudflare-build.sh'),read('package.json')]);
-  assert.match(html,/home-v080\.css\?v=0\.8\.0/);
-  assert.match(html,/app\.js\?v=0\.8\.0/);
-  assert.match(sw,/today-mayor-v080/);
+  assert.match(html,/home-v080\.css\?v=0\.8\.1/);
+  assert.match(html,/app\.js\?v=0\.8\.1/);
+  assert.match(sw,/today-mayor-v081/);
   assert.match(sw,/ponkichi-home-v080\.svg/);
   assert.match(build,/site\/assets\/ponkichi-home-v080\.svg/);
-  assert.equal(JSON.parse(pkg).version,'0.8.0');
+  assert.equal(JSON.parse(pkg).version,'0.8.1');
 });
