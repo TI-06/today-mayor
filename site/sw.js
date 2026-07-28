@@ -1,8 +1,8 @@
-const CACHE='today-mayor-v071';
-const VERSION='0.7.1';
+const CACHE='today-mayor-v080';
+const VERSION='0.8.0';
 const ASSETS=[
   './','./index.html','./manifest.webmanifest','./styles.css',
-  `./hotfix-v071.css?v=${VERSION}`,`./assets/tanuki-v071.svg?v=${VERSION}`,
+  `./hotfix-v071.css?v=${VERSION}`,`./home-v080.css?v=${VERSION}`,`./assets/ponkichi-home-v080.svg?v=${VERSION}`,`./assets/tanuki-v071.svg?v=${VERSION}`,
   `./js/app.js?v=${VERSION}`,'./js/content.js','./js/cloud.js','./js/monetization.js',
   './js/game/state.js','./js/game/finance.js','./js/game/focus.js','./js/game/auto-cases.js','./js/game/week-engine.js','./js/game/goals.js','./js/game/projects.js','./js/game/policies.js',
   './js/events/content.js','./js/events/engine.js',

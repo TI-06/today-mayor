@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 600" role="img" aria-labelledby="title desc">
+  <title id="title">タヌキ秘書ポン吉</title>
+  <desc id="desc">大きな目とふわふわの毛並み、縞尻尾を持ち、手を振るアニメ調のタヌキ秘書</desc>
+  <style>
+    #ponkichi-float{transform-box:fill-box;transform-origin:50% 88%;animation:float 3.2s ease-in-out infinite}
+    #ponkichi-wave-arm{transform-box:fill-box;transform-origin:70% 82%;animation:wave 1.8s ease-in-out infinite}
+    #ponkichi-tail{transform-box:fill-box;transform-origin:20% 70%;animation:tail 2.7s ease-in-out infinite}
+    #ponkichi-eyes{transform-box:fill-box;transform-origin:center;animation:blink 4.8s infinite}
+    #ponkichi-ears{transform-box:fill-box;transform-origin:center bottom;animation:ear 5.4s ease-in-out infinite}
+    #ponkichi-mouth{transform-box:fill-box;transform-origin:center top;animation:talk 2.2s ease-in-out infinite}
+    #ponkichi-leaf{transform-box:fill-box;transform-origin:20% 80%;animation:leaf 3s ease-in-out infinite}
+    @keyframes float{0%,100%{transform:translateY(0) rotate(-.5deg)}50%{transform:translateY(-7px) rotate(.7deg)}}
+    @keyframes wave{0%,100%{transform:rotate(-7deg)}45%{transform:rotate(13deg)}70%{transform:rotate(-2deg)}}
+    @keyframes tail{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(7deg)}}
+    @keyframes blink{0%,44%,48%,100%{transform:scaleY(1)}46%{transform:scaleY(.08)}}
+    @keyframes ear{0%,88%,100%{transform:rotate(0)}91%{transform:rotate(-2.5deg)}95%{transform:rotate(2deg)}}
+    @keyframes talk{0%,54%,100%{transform:scaleY(1)}66%{transform:scaleY(.72)}}
+    @keyframes leaf{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(4deg)}}
+    @media(prefers-reduced-motion:reduce){#ponkichi-float,#ponkichi-wave-arm,#ponkichi-tail,#ponkichi-eyes,#ponkichi-ears,#ponkichi-mouth,#ponkichi-leaf{animation:none}}
+  </style>
+  <defs>
+    <linearGradient id="furMain" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#df9b3f"/><stop offset=".52" stop-color="#b96526"/><stop offset="1" stop-color="#743813"/></linearGradient>
+    <linearGradient id="furLight" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff2bd"/><stop offset="1" stop-color="#e8b76d"/></linearGradient>
+    <linearGradient id="mask" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5a2b13"/><stop offset="1" stop-color="#24140e"/></linearGradient>
+    <linearGradient id="suit" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#214f6b"/><stop offset="1" stop-color="#102f45"/></linearGradient>
+    <linearGradient id="tie" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#66d495"/><stop offset="1" stop-color="#1c8e57"/></linearGradient>
+    <radialGradient id="eye" cx="35%" cy="28%" r="75%"><stop offset="0" stop-color="#5e3a17"/><stop offset=".55" stop-color="#24130b"/><stop offset="1" stop-color="#050403"/></radialGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="180%"><feDropShadow dx="0" dy="12" stdDeviation="9" flood-color="#432713" flood-opacity=".24"/></filter>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="160%"><feGaussianBlur stdDeviation="1.2"/></filter>
+  </defs>
+  <ellipse cx="213" cy="558" rx="132" ry="19" fill="#5d442d" opacity=".18" filter="url(#soft)"/>
+  <g id="ponkichi-float" filter="url(#shadow)">
+    <g id="ponkichi-tail">
+      <path d="M282 349c74-44 127-3 116 72-8 56-60 101-129 92 38-17 61-46 63-77 1-23-12-44-50-87z" fill="url(#furMain)" stroke="#4b250f" stroke-width="8"/>
+      <path d="M345 361c24 10 40 28 48 52-2 23-13 44-31 62-8-42-25-75-50-98 10-10 21-16 33-16z" fill="#2d1b14"/>
+      <path d="M284 464c25 5 48 16 68 32-21 15-47 22-76 21-12-11-22-24-29-39 12-8 24-13 37-14z" fill="#f5d99e"/>
+      <path d="M326 409c14 6 26 15 36 27" fill="none" stroke="#f0ad43" stroke-width="14" stroke-linecap="round" opacity=".78"/>
+    </g>
+    <g id="ponkichi-body">
+      <path d="M104 339c18-57 58-86 109-86 56 0 96 29 112 86l22 136c5 43-24 70-70 70H151c-46 0-75-27-70-70z" fill="url(#furMain)" stroke="#4b250f" stroke-width="9"/>
+      <path d="M148 335c17-39 42-58 67-58 26 0 51 19 68 58l5 126c1 35-26 59-73 59-47 0-74-24-73-59z" fill="url(#furLight)"/>
+      <path d="M147 337c-18 31-27 67-28 108l36-30 24 43 34-38 34 38 24-43 37 30c-1-42-11-78-29-108z" fill="url(#suit)" opacity=".96"/>
+      <path d="M188 331h52l-8 38-18 17-18-17z" fill="#fff8e8"/>
+      <path d="M205 355h18l12 49-21 24-21-24z" fill="url(#tie)"/>
+      <path d="M128 423h174" stroke="#52758a" stroke-width="5" stroke-linecap="round" opacity=".45"/>
+      <circle cx="151" cy="415" r="7" fill="#f7c55a"/><circle cx="277" cy="415" r="7" fill="#f7c55a"/>
+      <path d="M159 531v14M267 531v14" stroke="#49240f" stroke-width="25" stroke-linecap="round"/>
+      <ellipse cx="155" cy="546" rx="35" ry="18" fill="#6e3518"/><ellipse cx="271" cy="546" rx="35" ry="18" fill="#6e3518"/>
+    </g>
+    <g id="ponkichi-wave-arm">
+      <path d="M128 354c-44-5-75-38-75-78 0-32 19-55 44-55 22 0 38 17 38 42 0 29-16 48-42 54 17 10 33 15 50 15z" fill="url(#furMain)" stroke="#4b250f" stroke-width="8"/>
+      <ellipse cx="90" cy="244" rx="34" ry="39" fill="#9d5428" stroke="#4b250f" stroke-width="7" transform="rotate(-12 90 244)"/>
+      <ellipse cx="90" cy="247" rx="15" ry="18" fill="#d88d52"/>
+      <ellipse cx="70" cy="229" rx="7" ry="9" fill="#e3a068"/><ellipse cx="84" cy="219" rx="7" ry="9" fill="#e3a068"/><ellipse cx="101" cy="220" rx="7" ry="9" fill="#e3a068"/><ellipse cx="113" cy="234" rx="7" ry="9" fill="#e3a068"/>
+    </g>
+    <g id="ponkichi-right-arm">
+      <path d="M302 355c34 10 46 42 31 68-13 22-42 27-67 13" fill="none" stroke="#9d5428" stroke-width="31" stroke-linecap="round"/>
+      <ellipse cx="274" cy="435" rx="22" ry="19" fill="#7a3a1a" stroke="#4b250f" stroke-width="6"/>
+    </g>
+    <g id="ponkichi-head">
+      <g id="ponkichi-ears">
+        <path d="M93 126C63 68 103 37 152 84l-13 65z" fill="url(#furMain)" stroke="#4b250f" stroke-width="9"/>
+        <path d="M326 126c30-58-10-89-59-42l13 65z" fill="url(#furMain)" stroke="#4b250f" stroke-width="9"/>
+        <path d="M106 116c-14-31 10-43 35-19l-12 39zM313 116c14-31-10-43-35-19l12 39z" fill="#f5b68e"/>
+      </g>
+      <path d="M210 70c91 0 151 61 151 143 0 87-63 145-151 145S59 300 59 213C59 131 119 70 210 70z" fill="url(#furMain)" stroke="#4b250f" stroke-width="10"/>
+      <path d="M84 208c14-62 63-103 126-103s112 41 126 103c-19 64-59 102-126 102S103 272 84 208z" fill="#c87931" opacity=".5"/>
+      <path d="M80 190c23-64 80-92 130-51-28 27-42 64-41 106-45 9-78-9-89-55zM340 190c-23-64-80-92-130-51 28 27 42 64 41 106 45 9 78-9 89-55z" fill="url(#mask)"/>
+      <path d="M133 236c21-34 50-50 77-33 27-17 56-1 77 33-7 42-34 69-77 69s-70-27-77-69z" fill="url(#furLight)"/>
+      <path d="M159 97c15-18 33-27 51-27s36 9 51 27l-16 43-35-24-35 24z" fill="#e5a54b" opacity=".95"/>
+      <path d="M116 171l32-27M304 171l-32-27" stroke="#fff1c9" stroke-width="18" stroke-linecap="round"/>
+      <path d="M106 193l31 9M314 193l-31 9" stroke="#3a1d11" stroke-width="10" stroke-linecap="round" opacity=".55"/>
+    </g>
+    <g id="ponkichi-eyes">
+      <ellipse cx="151" cy="202" rx="39" ry="49" fill="#fff" stroke="#2e180f" stroke-width="7"/>
+      <ellipse cx="269" cy="202" rx="39" ry="49" fill="#fff" stroke="#2e180f" stroke-width="7"/>
+      <ellipse cx="158" cy="211" rx="25" ry="35" fill="url(#eye)"/>
+      <ellipse cx="262" cy="211" rx="25" ry="35" fill="url(#eye)"/>
+      <circle cx="149" cy="193" r="10" fill="#fff"/><circle cx="253" cy="193" r="10" fill="#fff"/>
+      <circle cx="166" cy="226" r="5" fill="#d58b2f"/><circle cx="270" cy="226" r="5" fill="#d58b2f"/>
+    </g>
+    <g id="ponkichi-mouth">
+      <path d="M193 244q17-15 34 0-3 21-17 21t-17-21z" fill="#3b2117"/>
+      <ellipse cx="210" cy="244" rx="8" ry="5" fill="#f4d98e" opacity=".8"/>
+      <path d="M166 270q44 49 88 0" fill="#5e2118" stroke="#3b2117" stroke-width="7" stroke-linejoin="round"/>
+      <path d="M187 291q23 17 46 0" fill="#f07c75"/>
+      <path d="M174 267q-14 10-30 2M246 267q14 10 30 2" fill="none" stroke="#3b2117" stroke-width="6" stroke-linecap="round"/>
+      <ellipse cx="115" cy="258" rx="17" ry="10" fill="#e96f5e" opacity=".62"/><ellipse cx="305" cy="258" rx="17" ry="10" fill="#e96f5e" opacity=".62"/>
+    </g>
+    <g id="ponkichi-leaf" transform="translate(285 79)">
+      <path d="M0 22C11-8 39-9 58 9 47 35 24 44 0 22z" fill="url(#tie)" stroke="#17633e" stroke-width="5"/>
+      <path d="M8 22Q28 11 49 8" fill="none" stroke="#c5f0c9" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="4" cy="25" r="8" fill="#f5c95d"/>
+    </g>
+  </g>
+</svg>

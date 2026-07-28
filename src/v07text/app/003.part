@@ -4,10 +4,10 @@
 }
 
 function render(){
-  const account=cloud.user?`👤 ${escapeHtml(cloud.user.username)}`:'ゲスト';
+  const accountLabel=cloud.user?`${escapeHtml(cloud.user.username)}としてログイン中`:'ゲスト利用中';
   app.className=`app-shell skin-${state.equippedSkin}`;
-  app.innerHTML=`<header class="topbar"><div><p>MAYOR'S OFFICE</p><h1>今日の市長</h1></div><div class="top-actions"><span class="account-chip">${account}</span><i class="cloud-dot ${cloud.available?'online':'offline'} ${cloud.syncing?'syncing':''}"></i><button class="menu-action" data-action="menu" aria-label="メニュー">⋯</button></div></header>${renderMoneyBar(state)}${viewMarkup()}<nav class="bottom-nav" aria-label="メインメニュー">${[
-    ['home','🏛️','ホーム'],['city','🏙️','街'],['policy','📋','政策'],['residents','👥','市民'],['records','📰','記録']
+  app.innerHTML=`<header class="topbar premium-topbar"><div class="brand-lockup"><p>MAYOR'S OFFICE</p><h1>今日の市長</h1></div><div class="top-actions"><i class="cloud-dot ${cloud.available?'online':'offline'} ${cloud.syncing?'syncing':''}"></i><button class="notification-action" data-tab="records" aria-label="お知らせを開く"><span>🔔</span><small>お知らせ</small></button><button class="menu-action" data-action="menu" aria-label="メニュー。${accountLabel}"><span>☰</span><small>メニュー</small></button></div></header>${renderMoneyBar(state)}${viewMarkup()}<nav class="bottom-nav premium-bottom-nav" aria-label="メインメニュー">${[
+    ['home','⌂','ホーム'],['city','🏙','街'],['policy','📋','政策'],['residents','👥','市民'],['records','▤','記録']
   ].map(([id,icon,label])=>`<button class="nav-item ${activeTab===id?'active':''}" data-tab="${id}"><span>${icon}</span><small>${label}</small></button>`).join('')}</nav>`;
 }
 
