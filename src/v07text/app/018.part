@@ -1,0 +1,11 @@
+)){state=createInitialState();save();menuDialog.close();activeTab='home';render();return}
+  if(event.target.closest('[data-logout]')){await logoutUser().catch(()=>{});cloud.user=null;openAccount('ログアウトしました。');render();return}
+  const cosmetic=event.target.closest('[data-cosmetic]');if(cosmetic){const item=COSMETICS.find(entry=>entry.id===cosmetic.dataset.cosmetic);if(!item)return;const owned=state.ownedCosmetics.includes(item.id);if(!owned&&state.leaves<item.cost){openCosmetics('衣装コインが不足しています。');return}state={...state,leaves:owned?state.leaves:state.leaves-item.cost,ownedCosmetics:owned?state.ownedCosmetics:[...state.ownedCosmetics,item.id],equippedSkin:item.id};save();render();openCosmetics('衣装を変更しました。');return}
+  if(event.target.closest('[data-rewarded]')){const result=await showRewardedAd();if(result.ok){state={...state,leaves:state.leaves+Number(result.reward?.leaves||10)};save();render();openCosmetics('衣装コインを受け取りました。')}else openCosmetics('広告プロバイダーが未設定です。');return}
+  const purchase=event.target.closest('[data-purchase]');if(purchase){const result=await purchaseProduct(purchase.dataset.purchase);openCosmetics(result.ok?'市長パスを有効化しました。':'決済プロバイダーが未設定です。')}
+});
+
+menuDialog.addEventListener('submit',async event=>{
+  const form=event.target.closest('[data-auth-form]');if(!form)return;event.preventDefault();
+  const data=new FormData(form);const mode=event.submitter?.value||'login';
+  try{const result=mode==='register'?await registerUser(data.get('username'),data.get('password')

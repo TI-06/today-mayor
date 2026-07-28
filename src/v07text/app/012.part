@@ -1,0 +1,10 @@
+↻ 新しい街で最初から</button><button class="secondary-action" data-menu-close>閉じる</button>`;
+  menuDialog.showModal();
+}
+
+function openAccount(message=''){
+  menuDialog.innerHTML=`<header><div><p>CLOUD SAVE</p><h2>アカウント</h2></div><button data-menu-view="root">←</button></header>${message?`<p class="form-message">${escapeHtml(message)}</p>`:''}${cloud.user?`<section class="menu-status"><b>${escapeHtml(cloud.user.username)}</b><small>v0.7の状態をクラウドへ保存します</small></section><button class="danger-action" data-logout>ログアウト</button>`:`<form data-auth-form><label>市長名<input name="username" minlength="3" maxlength="20" required autocomplete="username"></label><label>パスワード<input name="password" type="password" minlength="8" maxlength="72" required autocomplete="current-password"></label><div class="auth-actions"><button class="primary-action" name="mode" value="login">ログイン</button><button class="secondary-action" name="mode" value="register">新規登録</button></div></form>`}`;
+}
+
+function openCosmetics(message=''){
+  menuDialog.innerHTML=`<header><div><p>PONKICHI CLOSET</p><h2>ポン吉の衣装</h2></div><button data-menu-view="root">←</button></header><div class="leaf-balance">衣装コイン <b>🍃${state.leaves}</b></div>${message?`<p class="form-message">${escapeHtml(message)}</p>`:''}<section class="cosmetic-grid">${COSMETICS.map(item=>{const owned=state.ownedCosmetics.includes(item.id);const equipped=state.equippedSkin===item.id;return `<button class="cosmetic-card ${equipped?'selected':''}" data-cosmetic="${item.id}"><

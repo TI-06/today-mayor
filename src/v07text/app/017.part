@@ -1,0 +1,12 @@
+={...state,phase:'response'};save();closeSheet();render();return}
+  const response=event.target.closest('[data-response-choice]');if(response){openResponseConfirmation(response.dataset.responseChoice);return}
+  const executeResponse=event.target.closest('[data-execute-response]');if(executeResponse){const pipeline=activePipeline('response');const result=respondToEvent(state,pipeline.eventId,executeResponse.dataset.executeResponse);if(result.error){showToast(result.error,'warning');return}state={...result.state,phase:'city'};save();closeSheet();render();return}
+  if(event.target.closest('[data-skip-response]')){state={...state,phase:'city'};save();closeSheet();render();return}
+  const bond=event.target.closest('[data-bond]');if(bond){const result=issueBond(state,Number(bond.dataset.bond));if(result.error){showToast(result.error,'warning');return}state=result.state;save();openFinanceSheet();return}
+  const reserve=event.target.closest('[data-reserve]');if(reserve){const result=transferReserve(state,Number(reserve.dataset.reserve));if(result.error){showToast(result.error,'warning');return}state=result.state;save();openFinanceSheet();return}
+});
+
+menuDialog.addEventListener('click',async event=>{
+  if(event.target.closest('[data-menu-close]')){menuDialog.close();return}
+  const view=event.target.closest('[data-menu-view]')?.dataset.menuView;if(view==='root')openMenu();if(view==='account')openAccount();if(view==='cosmetics')openCosmetics();
+  if(event.target.closest('[data-reset]'

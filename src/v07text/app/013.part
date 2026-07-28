@@ -1,0 +1,21 @@
+span>${item.icon}</span><b>${escapeHtml(item.name)}</b><small>${equipped?'着用中':owned?'着替える':`🍃${item.cost}`}</small></button>`}).join('')}</section><button class="secondary-action" data-rewarded>広報動画で葉っぱを受け取る</button><button class="secondary-action" data-purchase="mayor_pass_s1">市長パスを確認</button><small>広告・決済はプロバイダー接続後に有効です。</small>`;
+}
+
+async function afterAuth(user){
+  cloud.user=user;
+  const remote=await loadV07CloudState().catch(()=>({state:null}));
+  if(isV07State(remote.state))state=normalizeState(remote.state);else await saveCloudState(state).catch(()=>{});
+  save();render();openAccount('ログインしました。');
+}
+
+app.addEventListener('click',event=>{
+  const tab=event.target.closest('[data-tab]');
+  if(tab){activeTab=TABS.includes(tab.dataset.tab)?tab.dataset.tab:'home';uiState.reaction=null;render();return}
+  const action=event.target.closest('[data-action]')?.dataset.action;
+  if(action==='phase-action'){handlePhaseAction();return}
+  if(action==='menu'){openMenu();return}
+  if(action==='finance-detail'){openFinanceSheet();return}
+  if(action==='restart'){state=createInitialState();save();activeTab='home';render();return}
+  const focus=event.target.closest('[data-focus]');
+  if(focus){if(state.phase!=='focus'){showToast('重点方針は週の開始時に変更できます。','warning');return}if(!state.manifesto){openFocusSheet();return}state=selectWeeklyFocus(state,focus.dataset.focus);state={...state,weeklyGoals:createWeeklyGoals(state,Math.random)};save();activeTab='home';render();return}
+  const delegation=ev

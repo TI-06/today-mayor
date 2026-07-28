@@ -1,0 +1,25 @@
+import {createInitialState,normalizeState,isV07State} from './game/state.js';
+import {FOCUS_OPTIONS,DELEGATION_OPTIONS,selectWeeklyFocus,setDelegationPolicy} from './game/focus.js';
+import {createWeeklyGoals,selectManifesto,MANIFESTOS,evaluateGoals,evaluateTerm,electionScore} from './game/goals.js';
+import {choosePolicyCase,applyPolicyChoice,getPolicyCase} from './game/policies.js';
+import {advancePhase} from './game/week-engine.js';
+import {financeStatus,forecastNextTreasury,issueBond,transferReserve} from './game/finance.js';
+import {EVENTS,getEvent} from './events/content.js';
+import {selectEventPreview,startEventPipeline,investigateEvent,respondToEvent,resolveEventFollowup} from './events/engine.js';
+import {PROJECTS,getProject,startProject,advanceProjects,pauseProject,cancelRecurringPolicy,investDistrict} from './game/projects.js';
+import {availableStoryNodes,resolveStoryChoice} from './characters/stories.js';
+import {getStory} from './characters/content.js';
+import {deriveCityVisualState} from './city/visual-state.js';
+import {renderMoneyBar,renderExpensePreview,escapeHtml,formatMoney,signedMoney} from './ui/components.js';
+import {renderHomeView} from './ui/home-view.js';
+import {renderCityView} from './ui/city-view.js';
+import {renderPolicyView} from './ui/policy-view.js';
+import {renderResidentView} from './ui/resident-view.js';
+import {renderRecordsView} from './ui/records-view.js';
+import {COSMETICS} from './content.js';
+import {getCloudStatus,getCurrentUser,registerUser,loginUser,logoutUser,loadV07CloudState,saveCloudState,submitChoice,fetchRanking,submitRanking} from './cloud.js';
+import {showRewardedAd,purchaseProduct} from './monetization.js';
+
+const KEY='today-mayor-v07';
+const TABS=['home','city','policy','residents','records'];
+const app=document.query

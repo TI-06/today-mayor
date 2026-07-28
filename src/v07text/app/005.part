@@ -1,0 +1,11 @@
+l}`,initialCost:option.initialCost,weeklyCost:option.weeklyCost},state)}<section class="confirmation-copy"><b>確認できている効果</b><p>${escapeHtml(option.knownEffect)}</p><em>将来リスク：${escapeHtml(option.uncertainty)}</em></section><button class="primary-action" data-execute-policy="${option.id}" ${state.treasury<option.initialCost?'disabled':''}>この内容で政策を実施する</button>`,'confirmation-sheet');
+}
+
+function openInvestigationConfirmation(optionId){
+  const pipeline=activePipeline('preview');const event=pipeline?getEvent(pipeline.eventId):null;const option=event?.investigations.find(item=>item.id===optionId);if(!event||!option)return;
+  openSheet('調査費の最終確認',`${renderExpensePreview({label:`${event.title}：${option.label}`,initialCost:option.cost,weeklyCost:0},state)}<p class="detail-copy">調査後に新しい情報が判明し、対処方法を選べるようになります。</p><button class="primary-action" data-execute-investigation="${option.id}" ${state.treasury<option.cost?'disabled':''}>調査を実施する</button>`,'confirmation-sheet');
+}
+
+function openResponseConfirmation(optionId){
+  const pipeline=activePipeline('response');const event=pipeline?getEvent(pipeline.eventId):null;const option=event?.responses.find(item=>item.id===optionId);if(!event||!option)return;
+  openSheet('対応費の最終確認',`${renderExpensePreview({label:`${event.title}：${option.label}`,initialCost:option.cost,weeklyCost:0},state)}<section class="confirmation-copy"><b>今回の対応</b><p>${escapeHtml(option.summary)}</p><em>続報の結果は、調査内容とこれまでの市政判断で変わります。</em></section><button class="primary-action" d

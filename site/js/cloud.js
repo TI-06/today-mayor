@@ -8,6 +8,7 @@ export const registerUser=(username,password)=>request('/api/auth/register',{met
 export const loginUser=(username,password)=>request('/api/auth/login',{method:'POST',body:JSON.stringify({username,password})});
 export const logoutUser=()=>request('/api/auth/logout',{method:'POST',body:'{}'});
 export const loadCloudState=()=>request('/api/save');
+export async function loadV07CloudState(){const result=await loadCloudState();return result?.state?.version==='0.7.0'?result:{...result,state:null}}
 export const saveCloudState=state=>request('/api/save',{method:'PUT',body:JSON.stringify({state})});
 export const submitChoice=(policyId,choiceId)=>request('/api/choice',{method:'POST',body:JSON.stringify({policyId,choiceId})});
 export const fetchRanking=()=>request('/api/ranking');

@@ -1,0 +1,53 @@
+Selector('#app');
+const actionSheet=document.querySelector('#action-sheet');
+const menuDialog=document.querySelector('#menu-dialog');
+const toast=document.querySelector('#toast');
+
+let state=loadLocalState();
+let activeTab='home';
+let ranking=[];
+let syncTimer=null;
+let uiState={currentPolicyId:null,reaction:null};
+let cloud={available:false,syncing:false,lastSync:null,user:null};
+
+function loadLocalState(){
+  try{return normalizeState(JSON.parse(localStorage.getItem(KEY)))}catch{return createInitialState()}
+}
+
+function updateRank(){
+  const average=(state.support+state.economy+state.life+state.environment+state.safety)/5;
+  const rank=average>=78?'街を変えた市長':average>=66?'敏腕市長':average>=54?'期待の市長':average>=40?'見習い市長':'崖っぷち市長';
+  state={...state,rank,projectedTreasury:forecastNextTreasury(state)};
+}
+
+function save(){
+  updateRank();
+  localStorage.setItem(KEY,JSON.stringify(state));
+  scheduleCloudSave();
+}
+
+function scheduleCloudSave(){
+  if(!cloud.available)return;
+  clearTimeout(syncTimer);
+  syncTimer=setTimeout(async()=>{
+    cloud.syncing=true;render();
+    try{
+      await saveCloudState(state);
+      await submitRanking(state);
+      cloud.lastSync=new Date().toISOString();
+    }catch{cloud.available=false}
+    finally{cloud.syncing=false;render()}
+  },650);
+}
+
+function showToast(message,type='info'){
+  toast.textContent=message;
+  toast.className=`toast show ${type}`;
+  clearTimeout(showToast.timer);
+  showToast.timer=setTimeout(()=>{toast.className='toast'},2600);
+}
+
+function openSheet(title,content,modifier=''){
+  if(actionSheet.open)actionSheet.close();
+  actionSheet.className=`action-sheet ${modifier}`;
+  actionSheet.innerHTML=`<div class="sheet-grabber"></div><header class="sheet-header"><div><p>WEEKLY DEC

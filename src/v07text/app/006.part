@@ -1,0 +1,18 @@
+ata-execute-response="${option.id}" ${state.treasury<option.cost?'disabled':''}>この対応を実行する</button>`,'confirmation-sheet');
+}
+
+function openPreviewSheet(){
+  let pipeline=activePipeline('preview');
+  if(!pipeline){
+    const event=selectEventPreview(state,Math.random);
+    if(!event){openSheet('今週の予告','<div class="empty-state">重大な兆候はありません。大型事業の検討へ進みます。</div><button class="primary-action" data-skip-preview>次へ進む</button>');return;}
+    state=startEventPipeline(state,event.id);pipeline=activePipeline('preview');save();
+  }
+  const event=getEvent(pipeline.eventId);
+  openSheet(event.title,`<div class="event-preview"><span>${event.icon}</span><p>${escapeHtml(event.preview)}</p></div><h3>調査方法</h3><div class="choice-list">${event.investigations.map(option=>`<button class="choice-card" data-investigation="${option.id}"><span>🔎</span><div><b>${escapeHtml(option.label)}</b><small>調査費 −${formatMoney(option.cost)}</small><p>調査後に対処案と判明情報を確認できます。</p><strong>調査後 ${formatMoney(state.treasury-option.cost)}</strong></div></button>`).join('')}</div>`,'event-sheet');
+}
+
+function openProjectSheet(){
+  const storyNodes=availableStoryNodes(state);
+  const availableProjects=PROJECTS.filter(project=>state.week>=project.unlockWeek&&!state.activeProjects.some(item=>item.id===project.id)&&!state.completedProjects.includes(project.id));
+  const stories=storyNodes.length?`<section class="sheet-section"><h3>住民からの相談</h3>${storyNodes.map(node=>`<button class="choice-card" data-sheet-story="${node.storyId}" da

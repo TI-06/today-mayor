@@ -1,0 +1,12 @@
+,support:2},'少ない費用で話題を広げます。',['tourism-promo']),response('none','民間対応に任せる',0,{economy:2,life:-5,support:-2},'市の支出はありませんが混雑が残ります。',['tourism-chaos'])],
+    followups:[followup('repeat','リピーターが増加','受け入れ態勢が評価され、継続的な観光需要につながりました。',{economy:6,support:3},pipeline=>pipeline.flags.includes('tourism-ready')||pipeline.investigationId==='demand'),followup('complaints','住民から混雑への苦情','交通混雑と騒音への不満が広がりました。',{life:-5,support:-3})]
+  },
+  {
+    id:'school-shortage',icon:'🏫',title:'新学期を前に教室が不足',category:'教育',weight:3,condition:state=>state.weeklyFocus==='childcare'||state.week>=3||(state.flags||[]).some(flag=>flag.startsWith('policy-lunch-')),
+    preview:'学園地区の児童数増加で、来年度は普通教室が不足する見込みです。',
+    investigations:[investigation('forecast','人口推計を精査',4,'不足は一時的ではなく、少なくとも5年続く見込みです。'),investigation('hearing','学校への聞き取り',2,'特別教室の転用で1年はしのげます。')],
+    responses:[response('extension','校舎を増築',28,{life:8,support:4},'将来需要にも対応できる恒久策です。',['school-extension']),response('temporary','仮設教室を設置',10,{life:4,support:1},'短期間で不足を解消します。',['school-temporary']),response('redistribute','通学区域を変更',2,{life:-3,support:-5},'費用を抑えますが家庭の負担が増えます。',['school-redistribute'])],
+    followups:[followup('stable','教育環境が安定','余裕のある教室配置で学校生活が改善しました。',{life:5,support:3},pipeline=>pipeline.flags.includes('school-extension')||pipeline.investigationId==='forecast'),followup('crowded','教室不足が再燃','暫定対応では追いつかず、再び混雑が問題になりました。',{life:-6,support:-4})]
+  },
+  {
+    id:'power-risk',icon:'⚡',title:'猛暑で電力需給がひっ迫',category:'環境',weight:2,condition:state=>state.we

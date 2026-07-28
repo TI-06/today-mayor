@@ -1,0 +1,15 @@
+b5af;box-shadow:0 0 0 4px rgba(166,181,175,.15)}
+.cloud-dot.online{background:#42a27e;box-shadow:0 0 0 4px rgba(66,162,126,.15)}
+.cloud-dot.syncing{animation:pulse 1s infinite}
+.menu-action{width:44px;height:44px;border:1px solid var(--line);border-radius:14px;background:#fff;color:var(--ink);font-size:22px}
+.money-bar{position:sticky;top:68px;z-index:35;margin:0;padding:9px 12px;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr) auto;gap:8px;align-items:center;background:#163f37;color:#fff;border-bottom:1px solid rgba(255,255,255,.14);box-shadow:0 7px 18px rgba(19,55,48,.13)}
+.money-bar.status-warning{background:#62542f}.money-bar.status-crisis,.money-bar.status-bankrupt{background:#66342e}
+.money-main span,.money-sub span,.leaf-wallet span{display:block;font-size:9px;opacity:.78}
+.money-main strong{display:block;font-size:17px;line-height:1.2;white-space:nowrap}
+.money-sub{display:grid;gap:2px;font-size:10px}.money-sub b{font-weight:800;white-space:nowrap}
+.leaf-wallet{padding:5px 8px;border-radius:11px;background:rgba(255,255,255,.12);text-align:center}.leaf-wallet b{display:block;font-size:12px}
+.view{padding:13px 13px 18px;display:grid;gap:12px}.home-view{padding-bottom:86px}
+.week-heading,.section-heading{display:flex;align-items:end;justify-content:space-between;gap:12px}
+.week-heading span,.section-heading span{font-size:10px;color:var(--muted)}
+.week-heading h2,.section-heading h2,.section-heading h3{margin:2px 0 0;font-size:17px}
+.week-heading>b{font-

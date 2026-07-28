@@ -1,0 +1,12 @@
+ek>=4||['industry','environment'].includes(state.weeklyFocus)||(state.flags||[]).some(flag=>flag.startsWith('policy-solar-')),
+    preview:'猛暑の影響で、市内の電力使用量が過去最高を更新しています。',
+    investigations:[investigation('grid','電力網の負荷を分析',4,'工業地区と公共施設が停電リスクの高い地点です。'),investigation('request','電力会社へ照会',1,'節電要請が必要との回答でした。')],
+    responses:[response('backup','公共施設へ非常用電源',22,{safety:7,life:3},'重要施設の停電を防ぎます。',['power-backup']),response('subsidy','家庭と企業へ節電補助',9,{environment:4,life:2,support:2},'需要を抑えて停電を回避します。',['power-saving']),response('appeal','広報だけで節電を呼びかけ',1,{safety:-5,support:-2},'低予算ですが効果は限定的です。',['power-appeal'])],
+    followups:[followup('stable','大規模停電を回避','準備が功を奏し、重要施設は通常運転を維持しました。',{safety:5,support:2},pipeline=>pipeline.flags.includes('power-backup')||pipeline.investigationId==='grid'),followup('blackout','一部地区で停電','交通信号と医療施設へ影響が出ました。',{safety:-7,life:-5,treasury:-12})]
+  },
+  {
+    id:'mascot-scandal',icon:'🍃',title:'市公式マスコットの投稿が炎上',category:'広報',weight:2,condition:()=>true,
+    preview:'市公式アカウントの投稿が誤解を招き、全国的な批判を受けています。',
+    investigations:[investigation('log','投稿経緯と承認ログを調査',2,'委託先の確認不足と市側の承認漏れが判明しました。'),investigation('trend','世論の推移だけ確認',1,'批判は強いものの、謝罪内容次第で沈静化しそうです。')],
+    responses:[response('apology','市長が説明と謝罪',3,{support:3},'原因と再発防止策を説明します。',['honest-apology']),response('delete','投稿削除と短文謝罪',1,{support:-1},'早期沈静化を狙います。',['short-apology']),response('ignore','反応せず様子を見る',0,{support:-7},'追加の話題化を避けます。',['ignored-scandal'])],
+    followups:[followup('recovery','誠実な対応が評価','説明の透明性が評価され

@@ -1,0 +1,17 @@
+export const RESIDENTS=[
+  {id:'shopkeeper',name:'三田村商店会長',role:'中央商店街代表',icon:'🏪',district:'central',interests:['economy','life']},
+  {id:'parent',name:'秋山みさき',role:'子育て世帯代表',icon:'👩‍👧',district:'residential',interests:['life','safety']},
+  {id:'worker',name:'大城工場長',role:'工業地区代表',icon:'👷',district:'industry',interests:['economy','environment']},
+  {id:'student',name:'森川ひなた',role:'高校生徒会長',icon:'🧑‍🎓',district:'school',interests:['life','environment']}
+];
+
+const choice=(id,label,relationship,effects={},flags=[])=>({id,label,relationship,effects,flags});
+const node=(id,week,title,body,choices,requires=[])=>({id,week,title,body,choices,requires});
+
+export const STORIES=[
+  {
+    id:'shopping-street',residentId:'shopkeeper',title:'中央商店街の再生',
+    nodes:[
+      node('opening',1,'空き店舗に若者を呼びたい','空き店舗を起業希望者へ貸し出すため、市の支援を求められました。',[choice('support-youth','改装費を支援する',7,{treasury:-20,economy:4,life:2},['shop-youth']),choice('small-grant','少額補助にする',3,{treasury:-8,economy:2},['shop-small']),choice('market-only','民間に任せる',-3,{economy:-1},['shop-market'])]),
+      node('mall-conflict',3,'大型モール誘致との対立','駅前再開発で大型モールの計画が浮上し、商店街から反対の声が上がりました。',[choice('coexist','共存協定を作る',6,{treasury:-10,economy:4,life:3},['shop-coexist']),choice('protect','商店街を優先する',5,{economy:-1,support:2},['shop-protect']),choice('mall','大型モールを優先する',-8,{economy:6,life:-2},['shop-mall'])],['shop-youth']),
+      node('festival',6,'商店街の新しい祭り','若手店主から夜市を定例化したいと相談がありました。',[choice('annual','市の恒例行事にする',6,{treasury:-12,economy:5,life:3},['

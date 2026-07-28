@@ -1,0 +1,7 @@
+icy-choice]');if(policyChoice){openPolicyConfirmation(policyChoice.dataset.policyChoice);return}
+  const executePolicy=event.target.closest('[data-execute-policy]');if(executePolicy){const result=applyPolicyChoice(state,uiState.currentPolicyId,executePolicy.dataset.executePolicy);if(result.error){showToast(result.error,'warning');return}state=advancePhase({...result.state,phase:'policy'},{type:'continue'}).state;uiState.currentPolicyId=null;if(cloud.available)submitChoice(result.policy.id,result.choice.id).catch(()=>{});save();closeSheet();render();return}
+  if(event.target.closest('[data-skip-preview]')){state={...state,phase:'project'};save();closeSheet();render();return}
+  const investigation=event.target.closest('[data-investigation]');if(investigation){openInvestigationConfirmation(investigation.dataset.investigation);return}
+  const executeInvestigation=event.target.closest('[data-execute-investigation]');if(executeInvestigation){const pipeline=activePipeline('preview');const result=investigateEvent(state,pipeline.eventId,executeInvestigation.dataset.executeInvestigation);if(result.error){showToast(result.error,'warning');return}state={...result.state,phase:'project'};uiState.reaction={type:'warning',line:result.reveal};save();closeSheet();render();return}
+  const project=event.target.closest('[data-sheet-project]');if(project){openProjectPreview(project.dataset.sheetProject);return}
+  const districtConfirm=event.target.closest('[data-confirm-district]');if(districtConf

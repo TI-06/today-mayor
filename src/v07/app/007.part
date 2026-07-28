@@ -1,0 +1,14 @@
+=pipeline.revealed.map(text=>`<li>${escapeHtml(text)}</li>`).join('');
+  openSheet(event.title,`<section class="investigation-result"><b>調査で判明したこと</b><ul>${revealed||'<li>十分な情報は得られていません。</li>'}</ul></section><div class="choice-list">${event.responses.map(option=>`<button class="choice-card" data-response-choice="${option.id}"><span>${event.icon}</span><div><b>${escapeHtml(option.label)}</b><small>対応費 −${formatMoney(option.cost)}</small><p>${escapeHtml(option.summary)}</p><strong>実施後 ${formatMoney(state.treasury-option.cost)}</strong></div></button>`).join('')}</div>`,'event-sheet');
+}
+
+
+const DISTRICT_NAMES={central:'中央',residential:'住宅',school:'学園',industry:'工業',port:'港',river:'河川'};
+function openDistrictInvestment(districtId){
+  const name=DISTRICT_NAMES[districtId];if(!name)return;const available=projectPhaseAvailable();
+  openSheet(`${name}地区への重点投資`,`${renderExpensePreview({label:`${name}地区への重点投資`,initialCost:20,weeklyCost:0},state)}<p class="detail-copy">地区の成長経験を20増やし、地域特性に応じて経済・暮らし・安心のいずれかを改善します。地区投資は1地区につき週1回までです。</p>${available?'':'<p class="warning-copy">実行できるのは木曜・事業と住民フェーズです。現在は計画だけ確認できます。</p>'}<button class="primary-action" data-confirm-district="${districtId}" ${state.treasury<20||!available?'disabled':''}>20億円を配分する</button>`);
+}
+
+function openProjectPreview(projectId){
+  const project=getProject(projectId);if(!project)return;const available=projectPhaseAvailable();
+  openSheet(project.name,`${renderExpensePreview({label:project.name,initialCost:
