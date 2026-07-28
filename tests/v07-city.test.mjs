@@ -21,7 +21,7 @@ test('finance crisis selects worried ponkichi reaction',()=>{
 });
 
 test('tanuki svg exposes animated body parts',async()=>{
-  const source=await readFile(new URL('../site/assets/tanuki-secretary.svg',import.meta.url),'utf8');
+  const source=await readFile(new URL('../site/assets/tanuki-v071.svg',import.meta.url),'utf8');
   for(const id of ['ponkichi-body','ponkichi-head','ponkichi-eyes','ponkichi-mouth','ponkichi-ears','ponkichi-tail','ponkichi-arms','ponkichi-binder','ponkichi-leaf-hat'])assert.match(source,new RegExp(`id="${id}"`));
 });
-test('tanuki svg includes lightweight anime part animations',async()=>{const source=await readFile(new URL('../site/assets/tanuki-secretary.svg',import.meta.url),'utf8');for(const name of ['ponkichiBlink','ponkichiTail','ponkichiEar','ponkichiMouth','ponkichiBinder'])assert.match(source,new RegExp(name))});
+test('tanuki svg includes lightweight anime part animations',async()=>{const source=await readFile(new URL('../site/assets/tanuki-v071.svg',import.meta.url),'utf8');for(const name of ['ponkichiBlink','ponkichiTail','ponkichiEar','ponkichiMouth','ponkichiBinder'])assert.match(source,new RegExp(name))});

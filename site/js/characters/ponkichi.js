@@ -24,7 +24,7 @@ export function derivePonkichiReaction(state,context={}){
 
 export function renderPonkichi(reaction,skinId='classic'){
   return `<div class="ponkichi-stage mood-${reaction.mood} action-${reaction.action}" data-skin="${skinId}">
-    <img class="ponkichi-character" src="./assets/tanuki-secretary.svg" alt="アニメ調のタヌキ秘書・ポン吉">
+    <img class="ponkichi-character" src="./assets/tanuki-v071.svg?v=0.7.1" alt="アニメ調のタヌキ秘書・ポン吉">
     <span class="ponkichi-name">秘書・ポン吉</span>
   </div>`;
 }
