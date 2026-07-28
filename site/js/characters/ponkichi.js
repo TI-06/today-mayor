@@ -27,8 +27,6 @@ export function renderPonkichi(reaction,skinId='classic'){
     <span class="ponkichi-shadow" aria-hidden="true"></span>
     <div class="ponkichi-motion">
       <img class="ponkichi-character ponkichi-home-asset" src="./assets/ponkichi-home-v080.svg?v=0.8.0" alt="手を振るアニメ調のタヌキ秘書・ポン吉">
-      <span class="ponkichi-eyelid ponkichi-eyelid-left" aria-hidden="true"></span>
-      <span class="ponkichi-eyelid ponkichi-eyelid-right" aria-hidden="true"></span>
     </div>
     <span class="ponkichi-name">秘書・ポン吉</span>
   </div>`;
