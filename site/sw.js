@@ -1,5 +1,5 @@
-const CACHE='today-mayor-v080';
-const VERSION='0.8.0';
+const CACHE='today-mayor-v081';
+const VERSION='0.8.1';
 const ASSETS=[
   './','./index.html','./manifest.webmanifest','./styles.css',
   `./hotfix-v071.css?v=${VERSION}`,`./home-v080.css?v=${VERSION}`,`./assets/ponkichi-home-v080.svg?v=${VERSION}`,`./assets/tanuki-v071.svg?v=${VERSION}`,
