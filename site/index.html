@@ -3,37 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#153a36">
-  <meta name="description" content="タヌキ秘書と街を育てる、スマホ向け都市運営ゲーム">
+  <meta name="theme-color" content="#174f46">
+  <meta name="description" content="タヌキ秘書と街を育てる、1日3判断の都市運営ゲーム">
   <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./assets/tanuki-secretary.svg">
   <link rel="stylesheet" href="./styles.css">
   <title>今日の市長</title>
 </head>
 <body>
-  <div id="app" class="app-shell">
-    <header class="topbar">
-      <div><p class="eyebrow">MAYOR'S OFFICE</p><h1>今日の市長</h1></div>
-      <button id="menuButton" class="icon-button" aria-label="メニュー">⋯</button>
-    </header>
-
-    <main id="screen" aria-live="polite"></main>
-
-    <nav class="bottom-nav" aria-label="メインメニュー">
-      <button data-tab="home" class="nav-item active"><span>🏛️</span><small>市長室</small></button>
-      <button data-tab="city" class="nav-item"><span>🏙️</span><small>街</small></button>
-      <button data-tab="records" class="nav-item"><span>📚</span><small>記録</small></button>
-    </nav>
-  </div>
-
-  <dialog id="policyDialog" class="sheet"><div id="policyBody"></div></dialog>
-  <dialog id="resultDialog" class="sheet"><div id="resultBody"></div></dialog>
-  <dialog id="menuDialog" class="menu-dialog">
-    <h2>ゲーム設定</h2>
-    <button id="shareButton" class="secondary-button">市政を共有</button>
-    <button id="resetButton" class="danger-button">最初からやり直す</button>
-    <button id="closeMenuButton" class="ghost-button">閉じる</button>
-  </dialog>
-
-  <script type="module" src="./app.js"></script>
+  <div id="app" class="app-shell" aria-live="polite"></div>
+  <dialog id="policy-dialog" class="sheet"></dialog>
+  <dialog id="event-dialog" class="event-dialog"></dialog>
+  <dialog id="menu-dialog" class="menu-dialog"></dialog>
+  <script type="module" src="./js/app.js"></script>
 </body>
 </html>

@@ -1,0 +1,2 @@
+import {json} from '../../_lib/response.js';import {parseCookies,sha256Hex,clearSessionCookie} from '../../_lib/auth.js';
+export async function onRequestPost({request,env}){const token=parseCookies(request.headers.get('cookie')).tm_session;if(token&&env?.DB)await env.DB.prepare('DELETE FROM sessions WHERE token_hash=?').bind(await sha256Hex(token)).run();return json({ok:true},200,{'set-cookie':clearSessionCookie()})}
